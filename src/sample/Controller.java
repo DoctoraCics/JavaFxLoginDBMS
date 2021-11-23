@@ -4,17 +4,12 @@ import java.sql.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-
 import javax.xml.transform.Result;
-
-
 public class Controller
 {
     private sqlManager currentManager;
     @FXML
     private Button test;
-
-
     public void test(ActionEvent ae)
     {
         Connection currentConnection;

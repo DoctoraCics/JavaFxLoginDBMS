@@ -4,4 +4,5 @@ module JavaFXLogin
     requires javafx.fxml;
     requires java.sql; // Required import
     opens sample; //package you want to open
+
 }

@@ -17,8 +17,6 @@ public class Controller
 
     public void test(ActionEvent ae)
     {
-        String username = "root";
-        String password = "S1Em$e*r#23";
         Connection currentConnection;
         /*
         String url = "jdbc:mysql://localhost:3306/employeeportal";

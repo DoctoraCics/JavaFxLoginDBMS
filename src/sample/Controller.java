@@ -18,27 +18,6 @@ public class Controller
     public void test(ActionEvent ae)
     {
         Connection currentConnection;
-        /*
-        String url = "jdbc:mysql://localhost:3306/employeeportal";
-        String query = "SELECT * FROM tbl_employees";
-        String compiled = "";
-        try
-        {
-            currentConnection = DriverManager.getConnection(url,username,password);
-            Statement statement = currentConnection.createStatement();
-            ResultSet result = statement.executeQuery(query);
-
-            while(result.next())
-            {
-                String name = result.getString(1);
-                compiled += "name+\n";
-            }
-        }
-        catch (SQLException e) {
-            e.printStackTrace();
-        }
-        System.out.println(compiled);*/
-
         sqlManager a = new sqlManager();
         System.out.println(a.returnQuery());
     }

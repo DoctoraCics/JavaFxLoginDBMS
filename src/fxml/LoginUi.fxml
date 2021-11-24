@@ -25,7 +25,7 @@
       <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
       <BorderPane GridPane.columnIndex="1">
          <center>
-            <Label text="Database Login" />
+            <Label prefHeight="17.0" prefWidth="154.0" text="Please login to your account" />
          </center>
       </BorderPane>
       <Label prefHeight="17.0" prefWidth="84.0" text="Email Address:" GridPane.rowIndex="1" />

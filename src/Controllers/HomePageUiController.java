@@ -28,6 +28,10 @@ public class HomePageUiController implements Initializable
     @FXML
     private TableColumn<TblView,String> Emp_Id;
 
+
+    @FXML
+    private Button update_btn;
+
     private sqlManager currentCon;
 
     ObservableList<TblView> obList = FXCollections.observableArrayList();
@@ -36,6 +40,23 @@ public class HomePageUiController implements Initializable
     public void initialize(URL location, ResourceBundle resources)
     {
         currentCon = new sqlManager();
+        try {
+            currentCon.returnDBdata(obList);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        Name.setCellValueFactory(new PropertyValueFactory<>("name"));
+        Location.setCellValueFactory(new PropertyValueFactory<>("location"));
+        dept_Name.setCellValueFactory(new PropertyValueFactory<>("department"));
+        Emp_Id.setCellValueFactory(new PropertyValueFactory<>("emp_id"));
+
+        employeePortal.setItems(obList);
+    }
+
+    public void updateView(ActionEvent actionEvent)
+    {
+        currentCon = new sqlManager();
+        obList = FXCollections.observableArrayList();
         try {
             currentCon.returnDBdata(obList);
         } catch (SQLException throwables) {

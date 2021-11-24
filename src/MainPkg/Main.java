@@ -11,7 +11,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/LoginUi.fxml"));
-        primaryStage.setTitle("Java - Database");
+        primaryStage.setTitle("Administrator Database Login");
         primaryStage.setScene(new Scene(root, 300, 150));
         //primaryStage.getIcons().add(new Image("file:src/Images/Logo.png"));
         primaryStage.setResizable(false);

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.HomePageUiController">
+   <center>
+      <TableView fx:id="employeePortal" prefHeight="132.0" prefWidth="305.0" BorderPane.alignment="CENTER">
+        <columns>
+          <TableColumn fx:id="Emp_Id" editable="false" prefWidth="97.0" text="Emplyee ID" />
+          <TableColumn fx:id="dept_Name" prefWidth="92.0" text="Department" />
+            <TableColumn fx:id="Location" prefWidth="75.0" text="Location" />
+            <TableColumn fx:id="Name" prefWidth="75.0" text="Name" />
+        </columns>
+      </TableView>
+   </center>
+   <top>
+      <BorderPane prefHeight="35.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <center>
+            <Button mnemonicParsing="false" text="Update" BorderPane.alignment="CENTER" />
+         </center>
+      </BorderPane>
+   </top>
+</BorderPane>

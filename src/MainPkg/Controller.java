@@ -1,16 +1,17 @@
-package sample;
+package MainPkg;
 import java.sql.*;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javax.xml.transform.Result;
+
 public class Controller
 {
     private sqlManager currentManager;
     @FXML
-    private Button test;
-    public void test(ActionEvent ae)
+    private Button LoginBtn;
+
+    public void Query(ActionEvent ae)
     {
         Connection currentConnection;
         sqlManager a = new sqlManager();
@@ -26,7 +27,7 @@ class sqlManager
     sqlManager()
     {
         username = "root"; //change this baka iba username
-        password = "Tamay0net!"; //change this baka iba password
+        password = "S1Em$e*r#23"; //change this baka iba password
         url = "jdbc:mysql://localhost:3306/employeeportal"; //change maybe if it does not work?
     }
     public String returnQuery()

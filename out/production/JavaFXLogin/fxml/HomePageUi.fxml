@@ -17,7 +17,7 @@
    <top>
       <BorderPane prefHeight="35.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <center>
-            <Button onAction="#updateView" fx:id="update_btn" mnemonicParsing="false" text="Update" BorderPane.alignment="CENTER" />
+            <Button mnemonicParsing="false" text="Update" BorderPane.alignment="CENTER" />
          </center>
       </BorderPane>
    </top>

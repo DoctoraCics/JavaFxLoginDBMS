@@ -58,7 +58,7 @@ public class HomePageUiController implements Initializable
         currentCon = new sqlManager();
         obList = FXCollections.observableArrayList();
         try {
-            currentCon.returnDBdata(obList);
+           obList = currentCon.returnDBdata(obList);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -68,5 +68,13 @@ public class HomePageUiController implements Initializable
         Emp_Id.setCellValueFactory(new PropertyValueFactory<>("emp_id"));
 
         employeePortal.setItems(obList);
+    }
+
+    //Dev Method
+    public void Query(ActionEvent ae)
+    {
+        Connection currentConnection;
+        sqlManager a = new sqlManager();
+        System.out.println(a.returnQuery());
     }
 }

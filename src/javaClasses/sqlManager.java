@@ -42,13 +42,15 @@ public class sqlManager
         return compiled;
     }
 
-    public void returnDBdata(ObservableList oblist) throws SQLException
+    public ObservableList returnDBdata(ObservableList oblist) throws SQLException
     {
         currentConnection = DriverManager.getConnection(url,username,password);
         ResultSet rs = currentConnection.createStatement().executeQuery("SELECT * FROM tbl_employees");
+        ObservableList editingList = oblist;
         while (rs.next())
         {
-            oblist.add(new TblView(rs.getString("employee_id"),rs.getString("department"),rs.getString("location"),rs.getString("name")));
+            editingList.add(new TblView(rs.getString("employee_id"),rs.getString("department"),rs.getString("location"),rs.getString("name")));
         }
+        return editingList;
     }
 }

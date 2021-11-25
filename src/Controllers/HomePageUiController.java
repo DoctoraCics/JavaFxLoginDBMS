@@ -41,7 +41,7 @@ public class HomePageUiController implements Initializable
     {
         currentCon = new sqlManager();
         try {
-            currentCon.returnDBdata(obList);
+            obList = currentCon.returnDBdata(obList);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

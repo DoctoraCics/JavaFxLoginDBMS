@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<GridPane alignment="center" hgap="3" vgap="1.5" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Controller">
+<GridPane alignment="center" hgap="3" vgap="1.5" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.LoginUiController">
    <columnConstraints>
       <ColumnConstraints />
       <ColumnConstraints />
@@ -19,7 +19,7 @@
    <children>
       <BorderPane GridPane.columnIndex="1" GridPane.rowIndex="3">
          <center>
-            <Button fx:id="LoginBtn" alignment="CENTER" mnemonicParsing="false" onAction="#Query" prefHeight="27.0" prefWidth="65.0" text="Login" />
+            <Button fx:id="LoginBtn" alignment="CENTER" mnemonicParsing="false" onAction="#ChangeScrn" prefHeight="27.0" prefWidth="65.0" text="Login" />
          </center>
       </BorderPane>
       <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.devUiController">
+  <tabs>
+    <Tab text="HashTest">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <BorderPane prefHeight="200.0" prefWidth="200.0">
+                     <bottom>
+                        <TextArea fx:id="outPutField" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+                     </bottom>
+                     <center>
+                        <Button fx:id="hashBtn" alignment="CENTER" mnemonicParsing="false" onAction="#hashIt" text="Generate Hash" BorderPane.alignment="CENTER" />
+                     </center>
+                     <top>
+                        <TextField fx:id="hashTxtFld" BorderPane.alignment="CENTER" />
+                     </top>
+                  </BorderPane>
+               </children></AnchorPane>
+      </content>
+    </Tab>
+    <Tab text="Password Validation">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <BorderPane prefHeight="200.0" prefWidth="200.0">
+                     <bottom>
+                        <TextArea fx:id="resultTest" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+                     </bottom>
+                     <center>
+                        <Button onAction="#validateIt" fx:id="validateBtn" mnemonicParsing="false" text="Validate" BorderPane.alignment="CENTER" />
+                     </center>
+                     <top>
+                        <TextField fx:id="inputPass" BorderPane.alignment="CENTER" />
+                     </top>
+                  </BorderPane>
+               </children></AnchorPane>
+      </content>
+    </Tab>
+  </tabs>
+</TabPane>

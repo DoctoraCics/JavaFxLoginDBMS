@@ -1,36 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<GridPane alignment="center" hgap="3" vgap="1.5" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.LoginUiController">
-   <columnConstraints>
-      <ColumnConstraints />
-      <ColumnConstraints />
-      <ColumnConstraints />
-   </columnConstraints>
-   <rowConstraints>
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-   </rowConstraints>
-   <children>
-      <BorderPane GridPane.columnIndex="1" GridPane.rowIndex="3">
-         <center>
-            <Button fx:id="LoginBtn" alignment="CENTER" mnemonicParsing="false" onAction="#ChangeScrn" prefHeight="27.0" prefWidth="65.0" text="Login" />
-         </center>
-      </BorderPane>
-      <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-      <BorderPane GridPane.columnIndex="1">
-         <center>
-            <Label prefHeight="17.0" prefWidth="154.0" text="Please login to your account" />
-         </center>
-      </BorderPane>
-      <Label prefHeight="17.0" prefWidth="84.0" text="Email Address:" GridPane.rowIndex="1" />
-      <PasswordField GridPane.columnIndex="1" GridPane.rowIndex="2" />
-      <Label text="Password:" GridPane.rowIndex="2" />
-      <Label GridPane.columnIndex="2" GridPane.rowIndex="3" />
-   </children>
-</GridPane>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #171717;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
+   <left>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #007FFF;" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="613.0" fitWidth="267.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Pictures/4.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </left>
+   <right>
+      <AnchorPane prefHeight="400.0" prefWidth="337.0" style="-fx-background-color: #007FFF;" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="79.0" layoutY="-14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Pictures/5.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="39.0" layoutY="161.0" text="Username" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="41.0" layoutY="196.0" text="Password" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <PasswordField layoutX="117.0" layoutY="194.0" promptText="Password" />
+            <TextField layoutX="116.0" layoutY="159.0" promptText="Username" />
+            <Label layoutX="114.0" layoutY="233.0" text="Please Login to your account" textFill="#ffc900" />
+            <Button layoutX="146.0" layoutY="271.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="65.0" style="-fx-background-color: #FFC900;" text="Log In" />
+         </children>
+      </AnchorPane>
+   </right>
+</BorderPane>

@@ -16,7 +16,7 @@ public class sqlManager
     public sqlManager()
     {
         username = "root"; //change this baka iba username
-        password = "S1Em$e*r#23"; //change this baka iba password
+        password = "admin"; //change this baka iba password
         url = "jdbc:mysql://localhost:3306/employeeportal"; //change maybe if it does not work?
     }
 

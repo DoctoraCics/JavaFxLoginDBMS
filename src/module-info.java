@@ -1,4 +1,4 @@
-module JavaFXLogin
+module JavaFxLoginDBMSNEW
 {
     requires javafx.controls; // Required import
     requires javafx.fxml;

@@ -4,42 +4,247 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
-   <left>
-      <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #007FFF;" BorderPane.alignment="CENTER">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <GridPane style="-fx-background-color: #007FFF;" BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
          <children>
-            <Label layoutX="14.0" prefHeight="42.0" prefWidth="540.0" text="Please complete the details below to Sign up for the inquiry" textFill="#ffc900">
-               <font>
-                  <Font size="15.0" />
-               </font></Label>
-            <Label layoutX="14.0" layoutY="42.0" text="First Name:" textFill="WHITE" />
-            <Label layoutX="14.0" layoutY="67.0" text="Last Name:" textFill="WHITE" />
-            <Label layoutX="14.0" layoutY="92.0" text="Birth Date:" textFill="WHITE" />
-            <TextField layoutX="102.0" layoutY="38.0" prefHeight="25.0" prefWidth="335.0" promptText="First Name" />
-            <TextField layoutX="102.0" layoutY="63.0" prefHeight="25.0" prefWidth="335.0" promptText="Last Name" />
-            <TextField layoutX="102.0" layoutY="88.0" prefHeight="29.0" prefWidth="335.0" promptText="MM/DD/YYYY" />
-            <Label layoutX="14.0" layoutY="123.0" text="Address Details:" textFill="#ffc900" />
-            <Label layoutX="14.0" layoutY="150.0" text="Unit/House No:" textFill="WHITE" />
-            <TextField layoutX="101.0" layoutY="146.0" prefHeight="28.0" prefWidth="335.0" />
-            <Label layoutX="14.0" layoutY="177.0" text="Building:" textFill="WHITE" />
-            <Label layoutX="14.0" layoutY="200.0" text="Barangay:" textFill="WHITE" />
-            <Label layoutX="14.0" layoutY="226.0" text="Postal Code:" textFill="WHITE" />
-            <Label layoutX="14.0" layoutY="252.0" text="Street:" textFill="WHITE" />
-            <Label layoutX="14.0" layoutY="278.0" text="City:" textFill="WHITE" />
-            <Label layoutX="14.0" layoutY="303.0" text="Province" textFill="WHITE" />
-            <Label layoutX="14.0" layoutY="328.0" text="Region:" textFill="WHITE" />
-            <Label layoutX="14.0" layoutY="354.0" text="Contact No:" textFill="WHITE" />
-            <TextField layoutX="101.0" layoutY="173.0" prefHeight="25.0" prefWidth="335.0" />
-            <TextField layoutX="101.0" layoutY="196.0" prefHeight="25.0" prefWidth="335.0" promptText="e.g  Binondo, Ermita, Intramuros" />
-            <TextField layoutX="101.0" layoutY="220.0" prefHeight="27.0" prefWidth="335.0" promptText="e.g 1010, 1080, 1630, 1700" />
-            <TextField layoutX="101.0" layoutY="243.0" prefHeight="30.0" prefWidth="335.0" promptText="e.g Aurora, Bayan-Bayanan" />
-            <TextField layoutX="101.0" layoutY="269.0" prefHeight="30.0" prefWidth="335.0" promptText="e.g Manila, Quezon, Makati" />
-            <TextField layoutX="102.0" layoutY="299.0" prefHeight="25.0" prefWidth="335.0" promptText="eg Baguio, Cebu, Davao" />
-            <TextField layoutX="102.0" layoutY="324.0" prefHeight="30.0" prefWidth="335.0" promptText="e.g NCR, CALABARZON, ARMM" />
-            <TextField layoutX="102.0" layoutY="350.0" prefHeight="25.0" prefWidth="335.0" promptText="+63" />
-            <Button layoutX="16.0" layoutY="408.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" style="-fx-background-color: #FFC900;" text="Cancle" />
-            <Button layoutX="101.0" layoutY="408.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" style="-fx-background-color: #FFC900;" text="Continue" />
+            <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+               <center>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label layoutX="14.0" layoutY="10.0" text="First Name:" textFill="#ffc900" />
+                        <TextField layoutX="92.0" layoutY="5.0" prefHeight="25.0" prefWidth="380.0" promptText="e.g John, Mark, Peter" />
+                     </children>
+                  </AnchorPane>
+               </center></BorderPane>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
+               <center>
+                  <AnchorPane prefHeight="33.0" prefWidth="7.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label layoutX="14.0" layoutY="10.0" text="Last Name:" textFill="#ffc900" />
+                     </children>
+                  </AnchorPane>
+               </center></BorderPane>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
+               <center>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label layoutX="14.0" layoutY="10.0" prefHeight="17.0" prefWidth="59.0" text="Birth Date:" textFill="#ffc900" />
+                     </children></AnchorPane>
+               </center></BorderPane>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <center>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+               </center></BorderPane>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <center>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <TextField layoutX="-207.0" layoutY="5.0" prefHeight="25.0" prefWidth="380.0" promptText="e.g Ramos, Santos, Cruz" />
+                     </children>
+                  </AnchorPane>
+               </center></BorderPane>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <center>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <DatePicker layoutX="-207.0" layoutY="5.0" prefHeight="25.0" prefWidth="380.0" promptText="MM/DD/YYYY" />
+                     </children></AnchorPane>
+               </center></BorderPane>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="4">
+               <center>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label layoutX="14.0" layoutY="10.0" text="Contact No:" textFill="#ffc900" />
+                     </children></AnchorPane>
+               </center>
+            </BorderPane>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="5">
+               <center>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label layoutX="7.0" layoutY="10.0" text="Email Address:" textFill="#ffc900" />
+                     </children></AnchorPane>
+               </center>
+            </BorderPane>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="6">
+               <center>
+                  <Label prefHeight="17.0" prefWidth="290.0" text="Address Details:" textFill="#ffc900" BorderPane.alignment="CENTER" />
+               </center>
+            </BorderPane>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="7">
+               <center>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label layoutX="5.0" layoutY="10.0" prefHeight="17.0" prefWidth="83.0" text="Unit/House No:" textFill="#ffc900" />
+                     </children></AnchorPane>
+               </center></BorderPane>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="8">
+               <center>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label layoutX="24.0" layoutY="10.0" text="Street:" textFill="#ffc900" />
+                     </children></AnchorPane>
+               </center></BorderPane>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="10">
+               <center>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label layoutX="14.0" layoutY="10.0" text="Barangay:" textFill="#ffc900" />
+                     </children></AnchorPane>
+               </center></BorderPane>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="11">
+               <center>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label layoutX="14.0" layoutY="10.0" text="Province:" textFill="#ffc900" />
+                     </children></AnchorPane>
+               </center></BorderPane>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="12">
+               <center>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label layoutX="14.0" layoutY="10.0" text="Region:" textFill="#ffc900" />
+                     </children></AnchorPane>
+               </center></BorderPane>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="13">
+               <center>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label layoutX="14.0" layoutY="10.0" text="Postal Code:" textFill="#ffc900" />
+                     </children></AnchorPane>
+               </center></BorderPane>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="14">
+               <center>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+               </center></BorderPane>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="9">
+               <center>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label layoutX="29.0" layoutY="10.0" text="City:" textFill="#ffc900" />
+                     </children></AnchorPane>
+               </center>
+            </BorderPane>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+               <center>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <TextField layoutX="-207.0" layoutY="5.0" prefHeight="25.0" prefWidth="380.0" promptText="63+" />
+                     </children></AnchorPane>
+               </center></BorderPane>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+               <center>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <TextField layoutX="-206.0" layoutY="5.0" prefHeight="25.0" prefWidth="380.0" promptText="e.g @yahoo , @gmail, @outlook" />
+                     </children></AnchorPane>
+               </center></BorderPane>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
+               <center>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+               </center></BorderPane>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
+               <center>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <TextField layoutX="-207.0" layoutY="5.0" maxWidth="382.0" prefHeight="25.0" prefWidth="380.0" promptText="e.g 42, 20, 69" />
+                     </children></AnchorPane>
+               </center></BorderPane>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="8">
+               <center>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <TextField layoutX="-208.0" layoutY="5.0" maxWidth="379.0" prefHeight="25.0" prefWidth="380.0" promptText="e.g Aurora, Bayan-Bayanan, Orchid" />
+                     </children></AnchorPane>
+               </center></BorderPane>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="9">
+               <center>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <TextField layoutX="-209.0" layoutY="5.0" maxWidth="382.0" prefHeight="25.0" prefWidth="380.0" promptText="e.g Manila, Quezon, Makati" />
+                     </children></AnchorPane>
+               </center></BorderPane>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="10">
+               <center>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <TextField layoutX="-209.0" layoutY="5.0" maxWidth="398.0" prefHeight="25.0" prefWidth="380.0" promptText="e.g Binondo, Ermita, Intramuros" />
+                     </children></AnchorPane>
+               </center></BorderPane>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="11">
+               <center>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <TextField layoutX="-209.0" layoutY="5.0" maxWidth="387.0" prefHeight="25.0" prefWidth="380.0" promptText="e.g Baguio, Cebu, Davao" />
+                     </children></AnchorPane>
+               </center></BorderPane>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="12">
+               <center>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <TextField layoutX="-209.0" layoutY="5.0" maxWidth="380.0" prefHeight="25.0" prefWidth="380.0" promptText="e.g NCR, CALABARZON, ARMM" />
+                     </children></AnchorPane>
+               </center></BorderPane>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="14">
+               <center>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+               </center>
+            </BorderPane>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="13">
+               <center>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <TextField layoutX="-210.0" layoutY="5.0" prefHeight="25.0" prefWidth="380.0" promptText="e.g 1000, 1001, 1002" />
+                     </children></AnchorPane>
+               </center>
+            </BorderPane>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="15">
+               <center>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Button layoutX="14.0" layoutY="-12.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" style="-fx-background-color: #FFC900;" text="Cancel" />
+                        <Button layoutX="92.0" layoutY="-12.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" style="-fx-background-color: #FFC900;" text="Continue" />
+                     </children></AnchorPane>
+               </center>
+            </BorderPane>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="15">
+               <center>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+               </center>
+            </BorderPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Label layoutX="14.0" layoutY="8.0" text="Please complete the details below to sign up for the quiry" textFill="#ffc900">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </children></AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" />
          </children>
-      </AnchorPane>
-   </left>
+      </GridPane>
+   </center>
 </BorderPane>

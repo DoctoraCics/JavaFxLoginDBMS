@@ -7,7 +7,8 @@ import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
 
-public class hashingGenVal
+
+public class hashingValidateClass
 {
     public static String hashThePass(String password) throws NoSuchAlgorithmException, InvalidKeySpecException
     {

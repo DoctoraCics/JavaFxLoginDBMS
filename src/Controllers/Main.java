@@ -12,9 +12,9 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/LoginUi.fxml"));
         primaryStage.setTitle("Database Login");
-        primaryStage.setScene(new Scene(root, 300, 150));
+        primaryStage.setScene(new Scene(root, 580, 400));
         //primaryStage.getIcons().add(new Image("file:src/Images/Logo.png"));
-        primaryStage.setResizable(true);
+        primaryStage.setResizable(false);
         primaryStage.show();
     }
     public static void main(String[] args) {

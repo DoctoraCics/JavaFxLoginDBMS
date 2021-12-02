@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.SignUpUiController">
    <center>
       <GridPane style="-fx-background-color: #007FFF;" BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -35,7 +35,7 @@
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <children>
                         <Label layoutX="14.0" layoutY="10.0" text="First Name:" textFill="#ffc900" />
-                        <TextField layoutX="92.0" layoutY="5.0" prefHeight="25.0" prefWidth="380.0" promptText="e.g John, Mark, Peter" />
+                        <TextField fx:id="firstName" layoutX="92.0" layoutY="5.0" prefHeight="25.0" prefWidth="380.0" promptText="e.g John, Mark, Peter" AnchorPane.leftAnchor="92.0" />
                      </children>
                   </AnchorPane>
                </center></BorderPane>
@@ -62,7 +62,7 @@
                <center>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <children>
-                        <TextField layoutX="-207.0" layoutY="5.0" prefHeight="25.0" prefWidth="380.0" promptText="e.g Ramos, Santos, Cruz" />
+                        <TextField fx:id="lastName" layoutX="-207.0" layoutY="5.0" prefHeight="25.0" prefWidth="380.0" promptText="e.g Ramos, Santos, Cruz" />
                      </children>
                   </AnchorPane>
                </center></BorderPane>
@@ -70,7 +70,7 @@
                <center>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <children>
-                        <DatePicker layoutX="-207.0" layoutY="5.0" prefHeight="25.0" prefWidth="380.0" promptText="MM/DD/YYYY" />
+                        <DatePicker fx:id="birthDate" layoutX="-207.0" layoutY="5.0" prefHeight="25.0" prefWidth="380.0" promptText="MM/DD/YYYY" />
                      </children></AnchorPane>
                </center></BorderPane>
             <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="4">
@@ -152,14 +152,14 @@
                <center>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <children>
-                        <TextField layoutX="-207.0" layoutY="5.0" prefHeight="25.0" prefWidth="380.0" promptText="63+" />
+                        <TextField fx:id="contactNo" layoutX="-207.0" layoutY="5.0" prefHeight="25.0" prefWidth="380.0" promptText="63+" />
                      </children></AnchorPane>
                </center></BorderPane>
             <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
                <center>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <children>
-                        <TextField layoutX="-206.0" layoutY="5.0" prefHeight="25.0" prefWidth="380.0" promptText="e.g @yahoo , @gmail, @outlook" />
+                        <TextField fx:id="emailAddress" layoutX="-206.0" layoutY="5.0" prefHeight="25.0" prefWidth="380.0" promptText="e.g @yahoo , @gmail, @outlook" />
                      </children></AnchorPane>
                </center></BorderPane>
             <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
@@ -170,42 +170,42 @@
                <center>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <children>
-                        <TextField layoutX="-207.0" layoutY="5.0" maxWidth="382.0" prefHeight="25.0" prefWidth="380.0" promptText="e.g 42, 20, 69" />
+                        <TextField fx:id="unitHouseNo" layoutX="-207.0" layoutY="5.0" maxWidth="382.0" prefHeight="25.0" prefWidth="380.0" promptText="e.g 42, 20, 69" />
                      </children></AnchorPane>
                </center></BorderPane>
             <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="8">
                <center>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <children>
-                        <TextField layoutX="-208.0" layoutY="5.0" maxWidth="379.0" prefHeight="25.0" prefWidth="380.0" promptText="e.g Aurora, Bayan-Bayanan, Orchid" />
+                        <TextField fx:id="streetD" layoutX="-208.0" layoutY="5.0" maxWidth="379.0" prefHeight="25.0" prefWidth="380.0" promptText="e.g Aurora, Bayan-Bayanan, Orchid" />
                      </children></AnchorPane>
                </center></BorderPane>
             <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="9">
                <center>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <children>
-                        <TextField layoutX="-209.0" layoutY="5.0" maxWidth="382.0" prefHeight="25.0" prefWidth="380.0" promptText="e.g Manila, Quezon, Makati" />
+                        <TextField fx:id="citY" layoutX="-209.0" layoutY="5.0" maxWidth="382.0" prefHeight="25.0" prefWidth="380.0" promptText="e.g Manila, Quezon, Makati" />
                      </children></AnchorPane>
                </center></BorderPane>
             <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="10">
                <center>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <children>
-                        <TextField layoutX="-209.0" layoutY="5.0" maxWidth="398.0" prefHeight="25.0" prefWidth="380.0" promptText="e.g Binondo, Ermita, Intramuros" />
+                        <TextField fx:id="barangaY" layoutX="-209.0" layoutY="5.0" maxWidth="398.0" prefHeight="25.0" prefWidth="380.0" promptText="e.g Binondo, Ermita, Intramuros" />
                      </children></AnchorPane>
                </center></BorderPane>
             <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="11">
                <center>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <children>
-                        <TextField layoutX="-209.0" layoutY="5.0" maxWidth="387.0" prefHeight="25.0" prefWidth="380.0" promptText="e.g Baguio, Cebu, Davao" />
+                        <TextField fx:id="provincE" layoutX="-209.0" layoutY="5.0" maxWidth="387.0" prefHeight="25.0" prefWidth="380.0" promptText="e.g Baguio, Cebu, Davao" />
                      </children></AnchorPane>
                </center></BorderPane>
             <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="12">
                <center>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <children>
-                        <TextField layoutX="-209.0" layoutY="5.0" maxWidth="380.0" prefHeight="25.0" prefWidth="380.0" promptText="e.g NCR, CALABARZON, ARMM" />
+                        <TextField fx:id="regioN" layoutX="-209.0" layoutY="5.0" maxWidth="380.0" prefHeight="25.0" prefWidth="380.0" promptText="e.g NCR, CALABARZON, ARMM" />
                      </children></AnchorPane>
                </center></BorderPane>
             <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="14">
@@ -217,7 +217,7 @@
                <center>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <children>
-                        <TextField layoutX="-210.0" layoutY="5.0" prefHeight="25.0" prefWidth="380.0" promptText="e.g 1000, 1001, 1002" />
+                        <TextField fx:id="postalCode" layoutX="-210.0" layoutY="5.0" prefHeight="25.0" prefWidth="380.0" promptText="e.g 1000, 1001, 1002" />
                      </children></AnchorPane>
                </center>
             </BorderPane>
@@ -225,8 +225,8 @@
                <center>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <children>
-                        <Button layoutX="14.0" layoutY="-12.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" style="-fx-background-color: #FFC900;" text="Cancel" />
-                        <Button layoutX="92.0" layoutY="-12.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" style="-fx-background-color: #FFC900;" text="Continue" />
+                        <Button fx:id="canceL" layoutX="14.0" layoutY="-12.0" mnemonicParsing="false" onAction="#changeScrn" prefHeight="25.0" prefWidth="65.0" style="-fx-background-color: #FFC900;" text="Cancel" />
+                        <Button fx:id="continuE" layoutX="92.0" layoutY="-12.0" mnemonicParsing="false" onAction="#changeScrn" prefHeight="25.0" prefWidth="65.0" style="-fx-background-color: #FFC900;" text="Continue" />
                      </children></AnchorPane>
                </center>
             </BorderPane>

@@ -1,6 +1,6 @@
 package Controllers;
 import java.io.IOException;
-import java.sql.*;
+
 import javaClasses.sqlManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,34 +9,45 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Hyperlink;
 import javafx.stage.Stage;
 
 public class LoginUiController
 {
     private sqlManager currentManager;
     @FXML
-    private Button LoginBtn;
+    private Hyperlink SignUpHyper;
+    @FXML
+    private Button LogInBtn;
 
     public void ChangeScrn(ActionEvent aw) throws IOException
     {
-        if(checkDbMatch())
+        if(aw.getSource().equals(SignUpHyper))
         {
-            Parent viewParent = FXMLLoader.load(getClass().getResource("/fxml/HomePageUi.fxml"));
+            Parent viewParent = FXMLLoader.load(getClass().getResource("/fxml/SignUp.fxml"));
             Scene viewScene = new Scene(viewParent);
 
             Stage srcWin = (Stage)((Node)aw.getSource()).getScene().getWindow();
             srcWin.setScene(viewScene);
             srcWin.show();
         }
-        else
+        if(aw.getSource().equals(LogInBtn))
         {
+            if(checkDbMatch())
+            {
+                Parent viewParent = FXMLLoader.load(getClass().getResource("/fxml/Main.fxml"));
+                Scene viewScene = new Scene(viewParent);
 
+                Stage srcWin = (Stage)((Node)aw.getSource()).getScene().getWindow();
+                srcWin.setScene(viewScene);
+                srcWin.show();
+            }
         }
     }
 
-    public boolean checkDbMatch()
+    private boolean checkDbMatch()
     {
-        boolean condition = true;
+        boolean condition = false;
         return condition;
     }
 }

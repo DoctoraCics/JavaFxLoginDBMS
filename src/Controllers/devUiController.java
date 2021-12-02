@@ -1,6 +1,6 @@
 package Controllers;
 
-import javaClasses.hashingGenVal;
+import javaClasses.hashingValidateClass;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
@@ -27,7 +27,7 @@ public class devUiController
     @FXML
     private TextField inputPass;
 
-    private hashingGenVal secuRity;
+    private hashingValidateClass secuRity;
 
     private String storedHashPassword;
 

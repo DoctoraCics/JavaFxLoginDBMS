@@ -17,14 +17,14 @@ public class sqlManager
     public sqlManager()
     {
         username = "root"; //change this baka iba username
-        password = "admin"; //change this baka iba password
-        url = "jdbc:mysql://localhost:3306/employeeportal"; //change maybe if it does not work?
+        password = "S1Em$e*r#23"; //change this baka iba password
+        url = "jdbc:mysql://localhost:3306/caliyxdb"; //change maybe if it does not work?
     }
 
     public sqlManager(String url)
     {
         username = "root";
-        password = "admin";
+        password = "S1Em$e*r#23";
         url = "jdbc:mysql://localhost:3306/" + url;
     }
 
@@ -52,7 +52,7 @@ public class sqlManager
 
     public boolean insertIntoUserData(userData insertThis) throws SQLException
     {
-        String query = "INSERT INTO [columns you want to select] FROM [what table?]";
+        String query = "INSERT INTO `caliyxdb`.`user_table` (`contact_num`, `fname`, `lname`, `bday`, `home_address`, `email_address`) VALUES ('0917265535', 'Jez', 'Sandi', '22-1-2021', '#69, Builduing 420', 'jezSandi@gmail.com');";
         currentConnection = DriverManager.getConnection(url,username,password);
         PreparedStatement statement = currentConnection.prepareStatement(query);
 
@@ -62,12 +62,18 @@ public class sqlManager
 
     public boolean validateLogin(String username, String pass) throws SQLException, NoSuchAlgorithmException, InvalidKeySpecException
     {
-        String query = "SELECT [] FROM [] WHERE []=" + username;
+        String query = "SELECT * FROM caliyxdb.user_login WHERE email_address=" + "'" + username + "'";
+        currentConnection = DriverManager.getConnection(this.url,this.username,this.password);
         PreparedStatement statement = currentConnection.prepareStatement(query);
-
         ResultSet retrievedData = statement.executeQuery(query);
-        String retrievedHash = retrievedData.getString(1);
-        String retrievedEmail = retrievedData.getString(0);
+
+        String retrievedHash = "";
+        String retrievedEmail = " ";
+        if(retrievedData.next())
+        {
+            retrievedHash = retrievedData.getString("password");
+            retrievedEmail = retrievedData.getString("email_address");
+        }
 
         hashingValidateClass validation = new hashingValidateClass();
         boolean passWordcondition = validation.validatePassword(pass,retrievedHash);

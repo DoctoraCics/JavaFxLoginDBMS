@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" fx:controller="Controllers.LoginUiController" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #171717;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #171717;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.LoginUiController">
    <left>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #007FFF;" BorderPane.alignment="CENTER">
          <children>
@@ -35,10 +35,10 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <PasswordField layoutX="117.0" layoutY="194.0" promptText="Password" />
-            <TextField layoutX="116.0" layoutY="159.0" promptText="Username" />
-            <Button onAction="#ChangeScrn" fx:id="LogInBtn" layoutX="127.0" layoutY="278.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="65.0" style="-fx-background-color: #FFC900;" text="Log In" />
-            <Hyperlink onAction="#ChangeScrn" fx:id="SignUpHyper" layoutX="36.0" layoutY="231.0" text="Don't have an account? Click here to Sign Up" textFill="#ffc900" underline="true" />
+            <PasswordField fx:id="passWord" layoutX="117.0" layoutY="194.0" promptText="Password" />
+            <TextField fx:id="userName" layoutX="116.0" layoutY="159.0" promptText="Username" />
+            <Button fx:id="LogInBtn" layoutX="127.0" layoutY="278.0" mnemonicParsing="false" onAction="#ChangeScrn" prefHeight="27.0" prefWidth="65.0" style="-fx-background-color: #FFC900;" text="Log In" />
+            <Hyperlink fx:id="SignUpHyper" layoutX="36.0" layoutY="231.0" onAction="#ChangeScrn" text="Don't have an account? Click here to Sign Up" textFill="#ffc900" underline="true" />
          </children>
       </AnchorPane>
    </right>

@@ -106,12 +106,13 @@ public class SignUpUiController
 
         if(gotoMain)
         {
+            /*
             userData newUser = new userData(checkFname,checkLname,checkBday,
                     checkContactno,checkEAddress,checkhouseNo,
                     checkStreet,checkCity,checkBarangay,checkProvince,
-                    checkRegion,checkPostalcode);
+                    checkRegion,checkPostalcode);*/
 
-            changetoMain(e, newUser);
+            //changetoMain(e, newUser);
         }
         else
         {

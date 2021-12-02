@@ -52,33 +52,53 @@ public class sqlManager
 
     public boolean insertIntoUserData(userData insertThis) throws SQLException
     {
-        String query = "INSERT INTO `caliyxdb`.`user_table` (`contact_num`, `fname`, `lname`, `bday`, `home_address`, `email_address`) VALUES ('0917265535', 'Jez', 'Sandi', '22-1-2021', '#69, Builduing 420', 'jezSandi@gmail.com');";
+        String query = "INSERT INTO `caliyxdb`.`user_table` (`contact_num`, `fname`, `lname`, `bday`, `home_address`, `email_address`) VALUES (?, ?, ?, ?, ?, ?);";
         currentConnection = DriverManager.getConnection(url,username,password);
         PreparedStatement statement = currentConnection.prepareStatement(query);
-
+        statement.setInt(1,insertThis.getContactNo());
+        statement.setString(2,insertThis.getFirstName());
+        statement.setString(3,insertThis.getLastName());
+        statement.setString(4,insertThis.getBirthDate());
+        statement.setString(5,insertThis.gethome_Address());
+        statement.setString(6, insertThis.getEmailAddress());
+        statement.executeQuery();
 
         return true;
     }
 
     public boolean validateLogin(String username, String pass) throws SQLException, NoSuchAlgorithmException, InvalidKeySpecException
     {
-        String query = "SELECT * FROM caliyxdb.user_login WHERE email_address=" + "'" + username + "'";
+        //This version is very dangerous
+        //String query = "SELECT * FROM caliyxdb.user_login WHERE email_address=" + "'" + username + "'";
+
         currentConnection = DriverManager.getConnection(this.url,this.username,this.password);
+
+        String query = "SELECT * FROM caliyxdb.user_login WHERE email_address = ?";
+
         PreparedStatement statement = currentConnection.prepareStatement(query);
-        ResultSet retrievedData = statement.executeQuery(query);
+        statement.setString(1, username);
+
+        //Do not past query in the executeQuery as the ? is passed
+        ResultSet retrievedData = statement.executeQuery();
+
 
         String retrievedHash = "";
         String retrievedEmail = " ";
-        if(retrievedData.next())
+        boolean passWordcondition = false;
+        boolean emailMatch = false;
+
+        while(retrievedData.next())
         {
             retrievedHash = retrievedData.getString("password");
             retrievedEmail = retrievedData.getString("email_address");
         }
 
-        hashingValidateClass validation = new hashingValidateClass();
-        boolean passWordcondition = validation.validatePassword(pass,retrievedHash);
-        boolean emailMatch = username.compareTo(retrievedEmail) == 0;
-
+        try
+        {
+            hashingValidateClass validation = new hashingValidateClass();
+            passWordcondition = validation.validatePassword(pass,retrievedHash);
+            emailMatch = username.compareTo(retrievedEmail) == 0;
+        }catch(Exception e){}
         return passWordcondition && emailMatch;
     }
 

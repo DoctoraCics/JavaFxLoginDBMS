@@ -7,37 +7,23 @@ public class userData
     private String birthDate;
     private int contactNo;
     private String emailAddress;
-    private int houseNo;
-    private String streeT;
-    private String citY;
-    private String barangaY;
-    private String provincE;
-    private String regioN;
-    private int postalCode;
+    private String home_Address;
 
 
     public userData(String fname, String lname, String bDay, int contact,
-                    String eAddress, int housenumber, String street, String city,
-                    String barangay, String province, String region, int postal)
+                    String eAddress, String home_Address)
     {
         this.firstName = fname;
         this.lastName = lname;
         this.birthDate = bDay;
         this.contactNo = contact;
         this.emailAddress = eAddress;
-        this.houseNo = housenumber;
-        this.streeT = street;
-        this.citY = city;
-        this.barangaY = barangay;
-        this.provincE = province;
-        this.regioN = region;
-        this.postalCode = postal;
+        this.home_Address = home_Address;
     }
     public String getCompiled()
     {
         String compiled = "";
-        compiled += firstName + " " + lastName + " " + birthDate + " " + contactNo + " " + emailAddress + " " + houseNo +
-                " " + streeT + " " + citY + " " + barangaY + " " + provincE + " " + regioN + " " + postalCode;
+        compiled += firstName + " " + lastName + " " + birthDate + " " + contactNo + " " + emailAddress + " ";
         return compiled;
     }
 
@@ -61,32 +47,6 @@ public class userData
         return emailAddress;
     }
 
-    public int getHouseNo() {
-        return houseNo;
-    }
-
-    public String getStreeT() {
-        return streeT;
-    }
-
-    public String getCitY() {
-        return citY;
-    }
-
-    public String getBarangaY() {
-        return barangaY;
-    }
-
-    public String getProvincE() {
-        return provincE;
-    }
-
-    public String getRegioN() {
-        return regioN;
-    }
-
-    public int getPostalCode() {
-        return postalCode;
-    }
+    public String gethome_Address(){return home_Address;}
 
 }

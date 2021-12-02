@@ -123,8 +123,9 @@ public class SignUpUiController
     {
         //Insertion to database of user data
         userData insertThisNewUser = insert;
-        sqlManager insertOrder = new sqlManager();
-        insertOrder.insertIntoUserData(insertThisNewUser);
+
+        //sqlManager insertOrder = new sqlManager(); //NOTE: BROKEN
+        //insertOrder.insertIntoUserData(insertThisNewUser); //NOTE: DBMS NEEDS TO  BE FIXED!
 
         //Load first the FXML
         FXMLLoader loadNew = new FXMLLoader();

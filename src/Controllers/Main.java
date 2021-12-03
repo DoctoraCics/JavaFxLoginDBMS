@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -13,7 +14,7 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/LoginUi.fxml"));
         primaryStage.setTitle("Database Login");
         primaryStage.setScene(new Scene(root, 580, 400));
-        //primaryStage.getIcons().add(new Image("file:src/Images/Logo.png"));
+        primaryStage.getIcons().add(new Image("file:src/Pictures/5.png"));
         primaryStage.setResizable(false);
         primaryStage.show();
     }

@@ -4,12 +4,12 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 
-<DialogPane fx:id="dialogPane" style="-fx-background-color: #007FFF;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
+<DialogPane fx:id="dialogPane" style="-fx-background-color: #007FFF;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <buttonTypes>
       <ButtonType fx:constant="CLOSE" />
    </buttonTypes>
    <content>
-      <Label text="Invalid Username or Password, Please Try Again." textFill="#ffc900">
+      <Label text="Invalid Input, Please Try Again." textFill="#ffc900">
          <font>
             <Font size="20.0" />
          </font>

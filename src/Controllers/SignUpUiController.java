@@ -27,6 +27,8 @@ public class SignUpUiController
     private TextField contactNo;
     @FXML
     private TextField emailAddress;
+    @FXML
+    private TextField passwWord;
 
 
     @FXML
@@ -73,6 +75,7 @@ public class SignUpUiController
         String checkLname = lastName.getText().trim();
         String checkBday = "";
         String checkEAddress = emailAddress.getText().trim();
+        String checkPassword = passwWord.getText().trim();
         int checkContactno = -1;
 
         int checkhouseNo = -1;
@@ -105,7 +108,7 @@ public class SignUpUiController
 
         try{checkPostalcode = Integer.parseInt(postalCode.getText().trim());}catch(Exception ac){gotoMain = false;}
         if(checkPostalcode < 0){gotoMain = false;}
-
+        if(checkPassword == ""){gotoMain = false;}
 
         if(gotoMain)
         {
@@ -113,7 +116,7 @@ public class SignUpUiController
                     + " " + checkRegion + " " + checkPostalcode;
 
             userData newUser = new userData(checkFname,checkLname,checkBday,
-                    checkContactno,checkEAddress, compiledHomeAddress, "root1"); //need password field
+                    checkContactno,checkEAddress, compiledHomeAddress, checkPassword); //need password field
 
             changetoMain(e, newUser);
         }
@@ -157,7 +160,7 @@ public class SignUpUiController
     private void launchInvalidwindow() throws IOException
     {
         FXMLLoader loadthis = new FXMLLoader();
-        loadthis.setLocation(getClass().getResource("/fxml/invalidDialogPrompt.fxml"));
+        loadthis.setLocation(getClass().getResource("/fxml/InvalidSignupDialogPrompt.fxml"));
 
         DialogPane loadtheError = loadthis.load();
         Dialog<ButtonType> dialog = new Dialog<>();

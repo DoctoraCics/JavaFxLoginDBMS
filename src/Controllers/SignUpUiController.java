@@ -27,6 +27,9 @@ public class SignUpUiController
     private TextField contactNo;
     @FXML
     private TextField emailAddress;
+
+    //these are suppose to be somewhere else
+    /*
     @FXML
     private TextField unitHouseNo;
     @FXML
@@ -41,6 +44,7 @@ public class SignUpUiController
     private TextField regioN;
     @FXML
     private TextField postalCode;
+    */
 
     @FXML
     private Button continuE;
@@ -72,13 +76,14 @@ public class SignUpUiController
         String checkBday = "";
         String checkEAddress = emailAddress.getText().trim();
         int checkContactno = -1;
-        int checkhouseNo = -1;
-        String checkStreet = streetD.getText().trim();
-        String checkCity = citY.getText().trim();
-        String checkBarangay = barangaY.getText().trim();
-        String checkProvince = provincE.getText().trim();
-        String checkRegion = regioN.getText().trim();
-        int checkPostalcode = -1;
+
+        //int checkhouseNo = -1;
+        //String checkStreet = streetD.getText().trim();
+        //String checkCity = citY.getText().trim();
+        //String checkBarangay = barangaY.getText().trim();
+        //String checkProvince = provincE.getText().trim();
+        //String checkRegion = regioN.getText().trim();
+        //int checkPostalcode = -1;
 
         boolean gotoMain = true;
         if(checkFname ==""|| containsIllegalcharacters(checkFname))gotoMain = false;
@@ -91,17 +96,17 @@ public class SignUpUiController
 
         if(checkEAddress == "" || containsIllegalcharacters(checkEAddress)) gotoMain = false;
 
-        try{checkhouseNo = Integer.parseInt(unitHouseNo.getText().trim());}catch(Exception ab){gotoMain = false;}
-        if(checkhouseNo < 0) gotoMain = false;
+        //try{checkhouseNo = Integer.parseInt(unitHouseNo.getText().trim());}catch(Exception ab){gotoMain = false;}
+        //(checkhouseNo < 0) gotoMain = false;
 
-        if(checkStreet == "" || containsIllegalcharacters(checkStreet)) gotoMain = false;
-        if(checkCity == "" || containsIllegalcharacters(checkCity)) gotoMain = false;
-        if(checkBarangay == "" || containsIllegalcharacters(checkBarangay)) gotoMain = false;
-        if(checkProvince == "" || containsIllegalcharacters(checkProvince)) gotoMain = false;
-        if(checkRegion == "" || containsIllegalcharacters(checkRegion)) gotoMain = false;
+        //if(checkStreet == "" || containsIllegalcharacters(checkStreet)) gotoMain = false;
+        //if(checkCity == "" || containsIllegalcharacters(checkCity)) gotoMain = false;
+        //if(checkBarangay == "" || containsIllegalcharacters(checkBarangay)) gotoMain = false;
+        //if(checkProvince == "" || containsIllegalcharacters(checkProvince)) gotoMain = false;
+        //if(checkRegion == "" || containsIllegalcharacters(checkRegion)) gotoMain = false;
 
-        try{checkPostalcode = Integer.parseInt(postalCode.getText().trim());}catch(Exception ac){gotoMain = false;}
-        if(checkPostalcode < 0){gotoMain = false;}
+        //try{checkPostalcode = Integer.parseInt(postalCode.getText().trim());}catch(Exception ac){gotoMain = false;}
+        //if(checkPostalcode < 0){gotoMain = false;}
 
 
         if(gotoMain)
@@ -164,19 +169,21 @@ public class SignUpUiController
             lastName.clear();
             contactNo.clear();
             emailAddress.clear();
-            unitHouseNo.clear();
+
+            /*unitHouseNo.clear();
             streetD.clear();
             citY.clear();
             barangaY.clear();
             regioN.clear();
-            postalCode.clear();
+            postalCode.clear();*/
+
             dialog.close();
         }
     }
 
     private boolean containsIllegalcharacters(String candidate)
     {
-        String[] arrayofIllegalCharacters = {"\"","/",":","*","?","<",">","|",";"};
+        String[] arrayofIllegalCharacters = {"\"","/",":","*","?","<",">","|",";","-"};
         for(int i = 0; i < arrayofIllegalCharacters.length; i++)
         {
             if(candidate.contains(arrayofIllegalCharacters[i]))

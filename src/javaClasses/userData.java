@@ -23,7 +23,7 @@ public class userData
     public String getCompiled()
     {
         String compiled = "";
-        compiled += firstName + " " + lastName + " " + birthDate + " " + contactNo + " " + emailAddress + " ";
+        compiled += firstName + " " + lastName + " " + birthDate + " " + contactNo + " " + emailAddress;
         return compiled;
     }
 

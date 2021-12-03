@@ -9,6 +9,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -126,7 +127,7 @@ public class SignUpUiController
         }
     }
 
-    private void changetoMain(ActionEvent e, userData insert) throws IOException
+    public void changetoMain(ActionEvent e, userData insert) throws IOException
     {
         //Insertion to database of user data
         sqlManager insertOrder = new sqlManager();
@@ -162,8 +163,11 @@ public class SignUpUiController
         FXMLLoader loadthis = new FXMLLoader();
         loadthis.setLocation(getClass().getResource("/fxml/InvalidSignupDialogPrompt.fxml"));
 
+
         DialogPane loadtheError = loadthis.load();
         Dialog<ButtonType> dialog = new Dialog<>();
+        Stage puticon = (Stage)dialog.getDialogPane().getScene().getWindow();
+        puticon.getIcons().add(new Image(this.getClass().getResource("/Pictures/5.png").toString()));
 
         dialog.setDialogPane(loadtheError);
         dialog.setTitle("Error");

@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainUiController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.MainUiController">
     <left>
         <AnchorPane prefHeight="400.0" prefWidth="611.0" style="-fx-background-color: #007FFF;" BorderPane.alignment="CENTER">
          <children>
@@ -20,8 +20,8 @@
             <Label layoutX="17.0" layoutY="243.0" text="Pool:" textFill="#ffc900" />
             <Label layoutX="17.0" layoutY="293.0" text="Garage:" textFill="#ffc900" />
             <Label layoutX="17.0" layoutY="345.0" text="Prices Ranges:" textFill="#ffc900" />
-            <Button layoutX="12.0" layoutY="413.0" mnemonicParsing="false" prefWidth="65.0" style="-fx-background-color: #FFC900;" text="Previous" />
-            <Button layoutX="99.0" layoutY="413.0" mnemonicParsing="false" prefWidth="65.0" style="-fx-background-color: #FFC900;" text="Continue" />
+            <Button fx:id="logOut" layoutX="12.0" layoutY="413.0" mnemonicParsing="false" onAction="#changScrn" prefWidth="65.0" style="-fx-background-color: #FFC900;" text="Log Out" />
+            <Button fx:id="continuE" layoutX="99.0" layoutY="413.0" mnemonicParsing="false" onAction="#changScrn" prefWidth="65.0" style="-fx-background-color: #FFC900;" text="Continue" />
             <ComboBox fx:id="floors" layoutX="12.0" layoutY="60.0" prefWidth="150.0" />
             <ComboBox fx:id="bedrooms" layoutX="12.0" layoutY="108.0" prefWidth="150.0" />
             <ComboBox fx:id="kitchens" layoutX="12.0" layoutY="157.0" prefWidth="150.0" />

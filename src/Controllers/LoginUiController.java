@@ -1,8 +1,5 @@
 package Controllers;
 import java.io.IOException;
-import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
-import java.sql.SQLException;
 import java.util.Optional;
 
 import javaClasses.sqlManager;
@@ -13,6 +10,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class LoginUiController
@@ -77,6 +75,9 @@ public class LoginUiController
 
         DialogPane loadtheError = loadthis.load();
         Dialog<ButtonType> dialog = new Dialog<>();
+
+        Stage puticon = (Stage)dialog.getDialogPane().getScene().getWindow();
+        puticon.getIcons().add(new Image(this.getClass().getResource("/Pictures/5.png").toString()));
 
         dialog.setDialogPane(loadtheError);
         dialog.setTitle("Error");

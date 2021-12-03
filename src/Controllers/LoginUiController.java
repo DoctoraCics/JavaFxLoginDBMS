@@ -3,6 +3,7 @@ import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.sql.SQLException;
+import java.util.Optional;
 
 import javaClasses.sqlManager;
 import javafx.event.ActionEvent;
@@ -11,9 +12,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Hyperlink;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 public class LoginUiController
@@ -41,20 +40,68 @@ public class LoginUiController
         }
         if(aw.getSource().equals(LogInBtn))
         {
-            if(checkDbMatch())
-            {
-                Parent viewParent = FXMLLoader.load(getClass().getResource("/fxml/Main.fxml"));
-                Scene viewScene = new Scene(viewParent);
 
-                Stage srcWin = (Stage)((Node)aw.getSource()).getScene().getWindow();
-                srcWin.setScene(viewScene);
-                srcWin.show();
+            if(!containsIllegalcharacters(userName.getText().trim()))
+            {
+                if(checkDbMatch())
+                {
+                    Parent viewParent = FXMLLoader.load(getClass().getResource("/fxml/Main.fxml"));
+                    Scene viewScene = new Scene(viewParent);
+
+                    Stage srcWin = (Stage)((Node)aw.getSource()).getScene().getWindow();
+                    srcWin.setScene(viewScene);
+                    srcWin.show();
+                }
+                else
+                {
+                    invalidWindow();
+                }
+            }
+            else
+            {
+                invalidWindow();
             }
         }
     }
 
-    private boolean checkDbMatch() throws SQLException, NoSuchAlgorithmException, InvalidKeySpecException {
+    private boolean checkDbMatch()
+    {
         currentManager = new sqlManager();
         return currentManager.validateLogin(userName.getText(),passWord.getText());
     }
+
+    public void invalidWindow() throws IOException
+    {
+        FXMLLoader loadthis = new FXMLLoader();
+        loadthis.setLocation(getClass().getResource("/fxml/invalidDialogPrompt.fxml"));
+
+        DialogPane loadtheError = loadthis.load();
+        Dialog<ButtonType> dialog = new Dialog<>();
+
+        dialog.setDialogPane(loadtheError);
+        dialog.setTitle("Error");
+
+        Optional<ButtonType> clickedButton = dialog.showAndWait();
+        if(clickedButton.get() == ButtonType.CLOSE)
+        {
+            userName.clear();
+            passWord.clear();
+            dialog.close();
+        }
+    }
+
+    private boolean containsIllegalcharacters(String candidate)
+    {
+        String[] arrayofIllegalCharacters = {"\"","/",":","*","?","<",">","|",";"};
+        for(int i = 0; i < arrayofIllegalCharacters.length; i++)
+        {
+            if(candidate.contains(arrayofIllegalCharacters[i]))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
 }

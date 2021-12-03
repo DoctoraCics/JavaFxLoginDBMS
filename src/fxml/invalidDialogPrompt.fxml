@@ -13,7 +13,7 @@
          <graphic>
             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Pictures/6.jpg" />
+                  <Image url="@../Pictures/6.png" />
                </image></ImageView>
          </graphic>
          <font>
@@ -21,6 +21,9 @@
          </font></Label>
    </content>
    <header>
-      <Label text="Error Message" textFill="#ffc900" />
+      <Label text="Error Message" textFill="#ffc900">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
    </header>
 </DialogPane>

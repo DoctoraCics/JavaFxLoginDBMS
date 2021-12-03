@@ -4,21 +4,22 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 
-<DialogPane style="-fx-background-color: #007FFF;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
+<DialogPane fx:id="dialogPane" style="-fx-background-color: #007FFF;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
    <buttonTypes>
       <ButtonType fx:constant="CLOSE" />
    </buttonTypes>
    <content>
-      <Label text="Invalid Login Credentials, Please Try Again." textFill="#ffc900">
+      <Label text="Invalid Username or Password, Please Try Again." textFill="#ffc900">
+         <font>
+            <Font size="20.0" />
+         </font>
          <graphic>
             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Pictures/6.jpg" />
-               </image></ImageView>
-         </graphic>
-         <font>
-            <Font size="20.0" />
-         </font></Label>
+               </image>
+            </ImageView>
+         </graphic></Label>
    </content>
    <header>
       <Label text="Error Message" textFill="#ffc900" />

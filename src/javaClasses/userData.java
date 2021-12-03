@@ -8,10 +8,11 @@ public class userData
     private int contactNo;
     private String emailAddress;
     private String home_Address;
+    private String passWord;
 
 
     public userData(String fname, String lname, String bDay, int contact,
-                    String eAddress, String home_Address)
+                    String eAddress, String home_Address, String passWord)
     {
         this.firstName = fname;
         this.lastName = lname;
@@ -19,6 +20,7 @@ public class userData
         this.contactNo = contact;
         this.emailAddress = eAddress;
         this.home_Address = home_Address;
+        this.passWord = passWord;
     }
     public String getCompiled()
     {
@@ -48,5 +50,7 @@ public class userData
     }
 
     public String gethome_Address(){return home_Address;}
+
+    public String getPassWord(){return passWord;}
 
 }

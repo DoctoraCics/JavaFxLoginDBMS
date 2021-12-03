@@ -67,7 +67,7 @@ public class SignUpUiController
         }
     }
 
-    private void checkInvalidInput(ActionEvent e) throws IOException, SQLException
+    private void checkInvalidInput(ActionEvent e) throws IOException
     {
         String checkFname = firstName.getText().trim();
         String checkLname = lastName.getText().trim();
@@ -113,7 +113,7 @@ public class SignUpUiController
                     + " " + checkRegion + " " + checkPostalcode;
 
             userData newUser = new userData(checkFname,checkLname,checkBday,
-                    checkContactno,checkEAddress, compiledHomeAddress);
+                    checkContactno,checkEAddress, compiledHomeAddress, "root1"); //need password field
 
             changetoMain(e, newUser);
         }
@@ -123,29 +123,35 @@ public class SignUpUiController
         }
     }
 
-    private void changetoMain(ActionEvent e, userData insert) throws IOException, SQLException
+    private void changetoMain(ActionEvent e, userData insert) throws IOException
     {
         //Insertion to database of user data
+        sqlManager insertOrder = new sqlManager();
+        if(insertOrder.insertIntoUserData(insert))
+        {
+            //Load first the FXML
+            FXMLLoader loadNew = new FXMLLoader();
+            loadNew.setLocation(getClass().getResource("/fxml/Main.fxml"));
 
-        //sqlManager insertOrder = new sqlManager(); //NOTE: BROKEN
-        //insertOrder.insertIntoUserData(insertThisNewUser); //NOTE: DBMS NEEDS TO  BE FIXED!
+            //Get the controller
+            Parent viewParent = loadNew.load();
+            MainUiController mainUi = loadNew.getController();
 
-        //Load first the FXML
-        FXMLLoader loadNew = new FXMLLoader();
-        loadNew.setLocation(getClass().getResource("/fxml/Main.fxml"));
+            //Send data to new Controller
+            mainUi.setCurrentuser(insert);
+            Scene viewScene = new Scene(viewParent);
 
-        //Get the controller
-        Parent viewParent = loadNew.load();
-        MainUiController mainUi = loadNew.getController();
+            //Switch view
+            Stage srcWin = (Stage)((Node)e.getSource()).getScene().getWindow();
+            srcWin.setScene(viewScene);
+            srcWin.show();
 
-        //Send data to new Controller
-        mainUi.setCurrentuser(insert);
-        Scene viewScene = new Scene(viewParent);
+        }
+        else
+        {
+            launchInvalidwindow();
+        }
 
-        //Switch view
-        Stage srcWin = (Stage)((Node)e.getSource()).getScene().getWindow();
-        srcWin.setScene(viewScene);
-        srcWin.show();
     }
 
     private void launchInvalidwindow() throws IOException
@@ -173,6 +179,7 @@ public class SignUpUiController
             barangaY.clear();
             regioN.clear();
             postalCode.clear();
+            provincE.clear();
             dialog.close();
         }
     }

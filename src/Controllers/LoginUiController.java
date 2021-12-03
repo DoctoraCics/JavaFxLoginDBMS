@@ -28,7 +28,8 @@ public class LoginUiController
     private TextField passWord;
 
 
-    public void ChangeScrn(ActionEvent aw) throws IOException, SQLException, NoSuchAlgorithmException, InvalidKeySpecException {
+    public void ChangeScrn(ActionEvent aw) throws IOException
+    {
         if(aw.getSource().equals(SignUpHyper))
         {
             Parent viewParent = FXMLLoader.load(getClass().getResource("/fxml/SignUp.fxml"));
@@ -40,7 +41,6 @@ public class LoginUiController
         }
         if(aw.getSource().equals(LogInBtn))
         {
-
             if(!containsIllegalcharacters(userName.getText().trim()))
             {
                 if(checkDbMatch())
@@ -67,7 +67,7 @@ public class LoginUiController
     private boolean checkDbMatch()
     {
         currentManager = new sqlManager();
-        return currentManager.validateLogin(userName.getText(),passWord.getText());
+        return currentManager.validateLogin(userName.getText().trim(),passWord.getText().trim());
     }
 
     public void invalidWindow() throws IOException
@@ -102,6 +102,4 @@ public class LoginUiController
         }
         return false;
     }
-
-
 }

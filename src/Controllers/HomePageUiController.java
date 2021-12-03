@@ -39,6 +39,7 @@ public class HomePageUiController implements Initializable
     @Override
     public void initialize(URL location, ResourceBundle resources)
     {
+        /*
         currentCon = new sqlManager();
         try {
             obList = currentCon.returnDBdata(obList);
@@ -51,10 +52,12 @@ public class HomePageUiController implements Initializable
         Emp_Id.setCellValueFactory(new PropertyValueFactory<>("emp_id"));
 
         employeePortal.setItems(obList);
+         */
     }
 
     public void updateView(ActionEvent actionEvent)
     {
+        /*
         currentCon = new sqlManager();
         obList = FXCollections.observableArrayList();
         try {
@@ -68,13 +71,16 @@ public class HomePageUiController implements Initializable
         Emp_Id.setCellValueFactory(new PropertyValueFactory<>("emp_id"));
 
         employeePortal.setItems(obList);
+         */
     }
 
     //Dev Method
     public void Query(ActionEvent ae)
     {
+        /*
         Connection currentConnection;
         sqlManager a = new sqlManager();
         System.out.println(a.returnQuery());
+         */
     }
 }

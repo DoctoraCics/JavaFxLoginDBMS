@@ -28,34 +28,20 @@ public class sqlManager
         url = "jdbc:mysql://localhost:3306/" + url;
     }
 
-    public String returnQuery()
-    {
-        String compiled = "";
-        String query = "SELECT * FROM tbl_employees";
-        try
-        {
-            currentConnection = DriverManager.getConnection(url,username,password);
-            PreparedStatement statement = currentConnection.prepareStatement(query);
-            ResultSet result = statement.executeQuery(query);
-
-            while(result.next())
-            {
-                String name = result.getString(4);
-                compiled += name +" \n";
-            }
-        }
-        catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return compiled;
-    }
-
     public boolean insertIntoUserData(userData insertThis)
     {
         try
         {
             String query = "INSERT INTO `caliyxdb`.`user_table` (`contact_num`, `fname`, `lname`, `bday`, `home_address`, `email_address`) VALUES (?, ?, ?, ?, ?, ?);";
+            String query2 = "INSERT INTO `caliyxdb`.`user_login` (`email_address`, `password`) VALUES (?, ?);";
             currentConnection = DriverManager.getConnection(this.url,this.username,this.password);
+            hashingValidateClass hashPass = new hashingValidateClass();
+
+            PreparedStatement statement2 = currentConnection.prepareStatement(query2);
+            statement2.setString(1,insertThis.getEmailAddress());
+            statement2.setString(2,hashPass.hashThePass(insertThis.getPassWord()));
+
+
             PreparedStatement statement = currentConnection.prepareStatement(query);
             statement.setInt(1,insertThis.getContactNo());
             statement.setString(2,insertThis.getFirstName());
@@ -63,7 +49,44 @@ public class sqlManager
             statement.setString(4,insertThis.getBirthDate());
             statement.setString(5,insertThis.gethome_Address());
             statement.setString(6, insertThis.getEmailAddress());
-            statement.executeQuery();
+
+            statement.executeUpdate();
+            statement2.executeUpdate();
+
+        }catch(SQLException e)
+        {
+            e.printStackTrace();
+            return false;
+        }
+        catch (NoSuchAlgorithmException e)
+        {
+            e.printStackTrace();
+            return false;
+        }
+        catch (InvalidKeySpecException e)
+        {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
+    public boolean deleteAccountUser(userData deleteThis)
+    {
+        try
+        {
+            String deleteUpdateLogin = "DELETE FROM `caliyxdb`.`user_login` WHERE (`email_address` = ?);";
+            String deleteUserdata = "DELETE FROM `caliyxdb`.`user_table` WHERE (`contact_num` = ?);";
+            currentConnection = DriverManager.getConnection(this.url,this.username,this.password);
+
+            PreparedStatement statement = currentConnection.prepareStatement(deleteUpdateLogin);
+            statement.setString(1,deleteThis.getEmailAddress());
+
+            PreparedStatement statement2 = currentConnection.prepareStatement(deleteUserdata);
+            statement2.setInt(1,deleteThis.getContactNo());
+
+            statement.executeUpdate();
+            statement2.executeUpdate();
         }catch(SQLException e)
         {
             e.printStackTrace();
@@ -103,13 +126,13 @@ public class sqlManager
             hashingValidateClass validation = new hashingValidateClass();
             passWordcondition = validation.validatePassword(pass,retrievedHash);
             emailMatch = username.compareTo(retrievedEmail) == 0;
-
             return passWordcondition && emailMatch;
 
         }catch(SQLException e){return false;}
         catch(Exception e){return false;}
     }
 
+/*
     public ObservableList returnDBdata(ObservableList oblist) throws SQLException
     {
         currentConnection = DriverManager.getConnection(url,username,password);
@@ -121,4 +144,30 @@ public class sqlManager
         }
         return editingList;
     }
+}
+*/
+/* Different Code
+    public String returnQuery()
+    {
+        String compiled = "";
+        try
+        {
+
+            String query = "SELECT * FROM tbl_employees";
+            currentConnection = DriverManager.getConnection(url,username,password);
+            PreparedStatement statement = currentConnection.prepareStatement(query);
+            ResultSet result = statement.executeQuery(query);
+
+            while(result.next())
+            {
+                String name = result.getString(4);
+                compiled += name +" \n";
+            }
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return compiled;
+
+*/
 }

@@ -115,9 +115,9 @@ public class sqlManager
             String query = "INSERT INTO `caliyxdb`.`reference_number` (`reference_num`, `amount`) VALUES (?, ?);";
             int min = 0;
             int max = 900000;
-            int iteration = 0;
+            int iteration = tobeInserted.getNodeCounter();
             NodeDLL<houseDetails> currentSelected = tobeInserted.getHead();
-            while(iteration <= tobeInserted.getNodeCounter())
+            while(0 < iteration)
             {
                 PreparedStatement statement = this.currentConnection.prepareStatement(query);
                 int generateRandomRef = ThreadLocalRandom.current().nextInt(min, max +1);
@@ -127,7 +127,7 @@ public class sqlManager
 
                 referenceNumber addThis = new referenceNumber(currentSelected.info.getPrice(),generateRandomRef);
                 returnThis.addToHead(addThis);
-                ++iteration;
+                --iteration;
                 currentSelected = currentSelected.next;
             }
             return returnThis;

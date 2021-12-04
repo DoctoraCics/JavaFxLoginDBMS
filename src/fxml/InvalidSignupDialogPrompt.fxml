@@ -4,7 +4,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 
-<DialogPane fx:id="dialogPane" style="-fx-background-color: #007FFF;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<DialogPane fx:id="dialogPane" style="-fx-background-color: #007FFF;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
    <buttonTypes>
       <ButtonType fx:constant="CLOSE" />
    </buttonTypes>
@@ -16,7 +16,7 @@
          <graphic>
             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Pictures/6.jpg" />
+                  <Image url="@../Pictures/6.png" />
                </image>
             </ImageView>
          </graphic></Label>

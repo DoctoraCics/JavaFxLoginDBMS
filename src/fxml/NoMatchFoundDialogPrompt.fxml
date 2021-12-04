@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+
+<DialogPane fx:id="dialogPane" style="-fx-background-color: #007FFF;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
+    <buttonTypes>
+        <ButtonType fx:constant="CLOSE" />
+    </buttonTypes>
+    <content>
+        <Label text="House Details Not Found, Please Try Again." textFill="#ffc900">
+            <font>
+                <Font size="20.0" />
+            </font>
+            <graphic>
+                <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../Pictures/6.png" />
+                    </image>
+                </ImageView>
+            </graphic></Label>
+    </content>
+    <header>
+        <Label text="Error Message" textFill="#ffc900" />
+    </header>
+</DialogPane>

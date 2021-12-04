@@ -112,7 +112,7 @@ public class sqlManager
         try
         {
 
-            String query = "INSERT INTO `caliyxdb`.`reference_number` (`reference_num`, `amount`) VALUES (?, ?);";
+            String query = "INSERT INTO `caliyxdb`.`reference_number` (`reference_num`, `amount`,`house_id`) VALUES (?, ?, ?);";
             int min = 0;
             int max = 900000;
             int iteration = tobeInserted.getNodeCounter();
@@ -123,6 +123,7 @@ public class sqlManager
                 int generateRandomRef = ThreadLocalRandom.current().nextInt(min, max +1);
                 statement.setInt(1,generateRandomRef);
                 statement.setInt(2,currentSelected.info.getPrice());
+                statement.setInt(3,currentSelected.info.getHouseId());
                 statement.executeUpdate();
 
                 referenceNumber addThis = new referenceNumber(currentSelected.info.getPrice(),generateRandomRef);
@@ -132,7 +133,11 @@ public class sqlManager
             }
             return returnThis;
         }
-        catch(SQLException abjsba){return returnThis;}
+        catch(SQLException abjsba)
+        {
+            abjsba.printStackTrace();
+            return returnThis;
+        }
     }
 
     public DoubleLinkedListCircle<houseDetails> returnResultInquiry(groupQuery theQuery)
@@ -172,7 +177,7 @@ public class sqlManager
             {
                 houseDetails enList = new houseDetails(rs.getInt("floor_no"),rs.getInt("bedroom_no")
                 ,rs.getInt("kitchen_no"),rs.getInt("bathroom_no"),rs.getInt("pool_yes_no")
-                ,rs.getInt("garage__yes_no"),rs.getInt("price"));
+                ,rs.getInt("garage__yes_no"),rs.getInt("price"),rs.getInt("house_id"));
                 returnResult.addToHead(enList);
             }
         }catch(SQLException e)

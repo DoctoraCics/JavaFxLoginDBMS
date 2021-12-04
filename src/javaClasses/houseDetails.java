@@ -2,6 +2,7 @@ package javaClasses;
 
 public class houseDetails
 {
+    private int houseId;
     private int floors;
     private int bedrooms;
     private int kitchens;
@@ -11,7 +12,7 @@ public class houseDetails
     private int price;
     private boolean inquireD;
 
-    public houseDetails(int floors, int bedrooms, int kitchens,int bathrooms, int pool, int garage, int price)
+    public houseDetails(int floors, int bedrooms, int kitchens,int bathrooms, int pool, int garage, int price,int houseId)
     {
         this.floors=floors;
         this.bedrooms=bedrooms;
@@ -20,7 +21,8 @@ public class houseDetails
         this.pool=pool;
         this.garage=garage;
         this.price=price;
-        inquireD = false;
+        this.inquireD = false;
+        this.houseId = houseId;
     }
 
     @Override
@@ -79,8 +81,11 @@ public class houseDetails
     {
         this.inquireD = inquiry;
     }
+
     public boolean getInquired()
     {
         return this.inquireD;
     }
+
+    public int getHouseId(){return this.houseId;}
 }

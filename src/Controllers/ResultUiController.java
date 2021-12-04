@@ -14,7 +14,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -47,6 +46,141 @@ public class ResultUiController
 
 
     public void takeAction(ActionEvent e) throws IOException, SQLException
+    {
+        switch (retrievedHoused.getNodeCounter())
+        {
+            case 1:
+                doubleLinkListCase1(e);break;
+            case 2:
+                doubleLinkListCase2(e);break;
+            default:
+                doubleLinkListDefault(e);break;
+
+        }
+        if(e.getSource().equals(goToPrevious))
+        {
+            Parent viewParent = FXMLLoader.load(getClass().getResource("/fxml/Main.fxml"));
+            Scene viewScene = new Scene(viewParent);
+
+            Stage srcWin = (Stage)((Node)e.getSource()).getScene().getWindow();
+            srcWin.setScene(viewScene);
+            srcWin.show();
+        }
+        if(e.getSource().equals(goToSummary))
+        {
+            DoubleLinkedListCircle<houseDetails> transFormed = new DoubleLinkedListCircle<>();
+            //System.out.println("Number of nodes for retreived Houses: " + this.retrievedHoused.getNodeCounter());
+            int iterations = this.retrievedHoused.getNodeCounter();
+            NodeDLL<houseDetails> marcher = this.retrievedHoused.getHead();
+            while(0 < iterations)
+            {
+                if(marcher.info.getInquired())
+                {
+                    transFormed.addToHead(marcher.info);
+                }
+                marcher = marcher.next;
+                --iterations;
+            }
+            System.out.println("Number of nodes for transformed: " + transFormed.getNodeCounter());
+
+
+            sqlManager insertionOfReceipt = new sqlManager();
+            DoubleLinkedListCircle<referenceNumber> receipt = insertionOfReceipt.inquireInsertion(transFormed);
+            //System.out.println(receipt.getHead().info.getReferenceNumber());
+
+            //Load first the FXML
+            FXMLLoader loadNew = new FXMLLoader();
+            loadNew.setLocation(getClass().getResource("/fxml/Summary.fxml"));
+
+            //Get the controller
+            Parent viewParent = loadNew.load();
+            SummaryUiController mainUi = loadNew.getController();
+
+            //Send data to new Controller
+            try
+            {
+                mainUi.setTheController(this.currentEmail, receipt);
+                Scene viewScene = new Scene(viewParent);
+
+                //Switch view
+                Stage srcWin = (Stage)((Node)e.getSource()).getScene().getWindow();
+                srcWin.setScene(viewScene);
+                srcWin.show();
+            }catch(NullPointerException a)
+            {
+                System.out.println("User did not Inquire");
+            }
+        }
+    }
+
+    public void setHouseDetails(DoubleLinkedListCircle<houseDetails> received, String userEmail)
+    {
+        this.retrievedHoused = received;
+        NodeDLL<houseDetails> startPointer = retrievedHoused.getHead();
+        //System.out.println(startPointer.info.toString());
+        result1 = retrievedHoused.getHead();
+        result2 = result1.next;
+        result3 = result2.next;
+        this.currentEmail = userEmail;
+
+        resultField.setText(result1.toString());
+        resultField2.setText(result2.toString());
+        resultField3.setText(result3.toString());
+    }
+    private void doubleLinkListCase1(ActionEvent e)
+    {
+        if(e.getSource().equals(inquire1) || e.getSource().equals(inquire2) || e.getSource().equals(inquire3))
+        {
+            if(result1.info.getInquired())
+            {
+                inquire1.setText("Inquire");
+                inquire2.setText("Inquire");
+                inquire3.setText("Inquire");
+                result1.info.setInquireD(false);
+            }
+            else
+            {
+                inquire1.setText("Cancel");
+                inquire2.setText("Cancel");
+                inquire3.setText("Cancel");
+                result1.info.setInquireD(true);
+            }
+        }
+    }
+
+    private void doubleLinkListCase2(ActionEvent e)
+    {
+        if(e.getSource().equals(inquire1) || e.getSource().equals(inquire3))
+        {
+            if(result1.info.getInquired())
+            {
+                inquire1.setText("Inquire");
+                inquire3.setText("Inquire");
+                result1.info.setInquireD(false);
+            }
+            else
+            {
+                inquire1.setText("Cancel");
+                inquire3.setText("Cancel");
+                result1.info.setInquireD(true);
+            }
+        }
+        if(e.getSource().equals(inquire2))
+        {
+            if(result2.info.getInquired())
+            {
+                inquire2.setText("Inquire");
+                result2.info.setInquireD(false);
+            }
+            else
+            {
+                inquire2.setText("Cancel");
+                result2.info.setInquireD(true);
+            }
+        }
+    }
+
+    private void doubleLinkListDefault(ActionEvent e)
     {
         if(e.getSource().equals(inquire1))
         {
@@ -87,65 +221,5 @@ public class ResultUiController
                 result3.info.setInquireD(true);
             }
         }
-
-        if(e.getSource().equals(goToPrevious))
-        {
-            Parent viewParent = FXMLLoader.load(getClass().getResource("/fxml/Main.fxml"));
-            Scene viewScene = new Scene(viewParent);
-
-            Stage srcWin = (Stage)((Node)e.getSource()).getScene().getWindow();
-            srcWin.setScene(viewScene);
-            srcWin.show();
-        }
-        if(e.getSource().equals(goToSummary))
-        {
-            DoubleLinkedListCircle<houseDetails> transFormed = new DoubleLinkedListCircle<>();
-            int iterations = this.retrievedHoused.getNodeCounter();
-            NodeDLL<houseDetails> marcher = this.retrievedHoused.getHead();
-            while(iterations != 0)
-            {
-                if(marcher.info.getInquired())
-                {
-                    transFormed.addToHead(marcher.info);
-                }
-                marcher = marcher.next;
-                --iterations;
-            }
-
-            sqlManager insertionOfReceipt = new sqlManager();
-            DoubleLinkedListCircle<referenceNumber> receipt = insertionOfReceipt.inquireInsertion(transFormed);
-
-            //Load first the FXML
-            FXMLLoader loadNew = new FXMLLoader();
-            loadNew.setLocation(getClass().getResource("/fxml/Summary.fxml"));
-
-            //Get the controller
-            Parent viewParent = loadNew.load();
-            SummaryUiController mainUi = loadNew.getController();
-
-            //Send data to new Controller
-            mainUi.setTheController(this.currentEmail, receipt);
-            Scene viewScene = new Scene(viewParent);
-
-            //Switch view
-            Stage srcWin = (Stage)((Node)e.getSource()).getScene().getWindow();
-            srcWin.setScene(viewScene);
-            srcWin.show();
-        }
-    }
-
-    public void setHouseDetails(DoubleLinkedListCircle<houseDetails> received, String userEmail)
-    {
-        this.retrievedHoused = received;
-        NodeDLL<houseDetails> startPointer = retrievedHoused.getHead();
-        System.out.println(startPointer.info.toString());
-        result1 = retrievedHoused.getHead();
-        result2 = result1.next;
-        result3 = result2.next;
-        this.currentEmail = userEmail;
-
-        resultField.setText(result1.toString());
-        resultField2.setText(result2.toString());
-        resultField3.setText(result3.toString());
     }
 }

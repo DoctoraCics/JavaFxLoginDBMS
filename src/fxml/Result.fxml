@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane fx:controller="Controllers.ResultUiController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ResultUiController">
    <top>
       <AnchorPane prefHeight="450.0" prefWidth="700.0" style="-fx-background-color: #007FFF;" BorderPane.alignment="CENTER">
          <children>
@@ -12,17 +12,17 @@
                <font>
                   <Font size="15.0" />
                </font></Label>
-            <Button layoutX="16.0" layoutY="395.0" mnemonicParsing="false" prefWidth="65.0" style="-fx-background-color: #FFC900;" text="Previous" />
-            <Button layoutX="97.0" layoutY="395.0" mnemonicParsing="false" style="-fx-background-color: #FFC900;" text="Continue" />
+            <Button fx:id="goToPrevious" layoutX="16.0" layoutY="395.0" mnemonicParsing="false" onAction="#takeAction" prefWidth="65.0" style="-fx-background-color: #FFC900;" text="Previous" />
+            <Button fx:id="goToSummary" layoutX="97.0" layoutY="395.0" mnemonicParsing="false" onAction="#takeAction" style="-fx-background-color: #FFC900;" text="Continue" />
             <Label layoutX="22.0" layoutY="64.0" text="House 1" textFill="#ffc900" />
             <Label layoutX="222.0" layoutY="64.0" text="House 2" textFill="#ffc900" />
             <Label layoutX="432.0" layoutY="64.0" text="House 3" textFill="#ffc900" />
-            <TextArea layoutX="14.0" layoutY="89.0" prefHeight="200.0" prefWidth="200.0" text="410 Dr. Sixto Antonio Avenue&#10;2 Floors&#10;2 Bedrooms&#10;2 Kitchens&#10;2 Bathrooms&#10;Pool: Yes&#10;Garage: Yes&#10;Php 5,000,000" />
-            <TextArea layoutX="222.0" layoutY="89.0" prefHeight="200.0" prefWidth="200.0" text="410 Dr. Sixto Antonio Avenue&#10;2 Floors&#10;2 Bedrooms&#10;2 Kitchens&#10;2 Bathrooms&#10;Pool: Yes&#10;Garage: Yes&#10;Php 5,000,000" />
-            <TextArea layoutX="432.0" layoutY="89.0" prefHeight="200.0" prefWidth="200.0" text="410 Dr. Sixto Antonio Avenue&#10;2 Floors&#10;2 Bedrooms&#10;2 Kitchens&#10;2 Bathrooms&#10;Pool: Yes&#10;Garage: Yes&#10;Php 5,000,000" />
-            <Button layoutX="14.0" layoutY="298.0" mnemonicParsing="false" style="-fx-background-color: #FFC900;" text="Inquire" />
-            <Button layoutX="222.0" layoutY="298.0" mnemonicParsing="false" style="-fx-background-color: #FFC900;" text="Inquire" />
-            <Button layoutX="432.0" layoutY="298.0" mnemonicParsing="false" style="-fx-background-color: #FFC900;" text="Inquire" />
+            <TextArea fx:id="resultField" layoutX="14.0" layoutY="89.0" prefHeight="200.0" prefWidth="200.0" text="410 Dr. Sixto Antonio Avenue&#10;2 Floors&#10;2 Bedrooms&#10;2 Kitchens&#10;2 Bathrooms&#10;Pool: Yes&#10;Garage: Yes&#10;Php 5,000,000" />
+            <TextArea fx:id="resultField2" layoutX="222.0" layoutY="89.0" prefHeight="200.0" prefWidth="200.0" text="410 Dr. Sixto Antonio Avenue&#10;2 Floors&#10;2 Bedrooms&#10;2 Kitchens&#10;2 Bathrooms&#10;Pool: Yes&#10;Garage: Yes&#10;Php 5,000,000" />
+            <TextArea fx:id="resultField3" layoutX="432.0" layoutY="89.0" prefHeight="200.0" prefWidth="200.0" text="410 Dr. Sixto Antonio Avenue&#10;2 Floors&#10;2 Bedrooms&#10;2 Kitchens&#10;2 Bathrooms&#10;Pool: Yes&#10;Garage: Yes&#10;Php 5,000,000" />
+            <Button fx:id="inquire1" layoutX="14.0" layoutY="298.0" mnemonicParsing="false" onAction="#takeAction" style="-fx-background-color: #FFC900;" text="Inquire" />
+            <Button fx:id="inquire2" layoutX="222.0" layoutY="298.0" mnemonicParsing="false" onAction="#takeAction" style="-fx-background-color: #FFC900;" text="Inquire" />
+            <Button fx:id="inquire3" layoutX="432.0" layoutY="298.0" mnemonicParsing="false" onAction="#takeAction" style="-fx-background-color: #FFC900;" text="Inquire" />
          </children>
       </AnchorPane>
    </top>

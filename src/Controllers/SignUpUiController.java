@@ -53,7 +53,7 @@ public class SignUpUiController
     private Button canceL;
 
 
-    public void changeScrn(ActionEvent e) throws IOException, SQLException
+    public void changeScrn(ActionEvent e) throws IOException
     {
         if(e.getSource().equals(continuE))
         {
@@ -130,32 +130,39 @@ public class SignUpUiController
     public void changetoMain(ActionEvent e, userData insert) throws IOException
     {
         //Insertion to database of user data
-        sqlManager insertOrder = new sqlManager();
-        if(insertOrder.insertIntoUserData(insert))
+        try
         {
-            //Load first the FXML
-            FXMLLoader loadNew = new FXMLLoader();
-            loadNew.setLocation(getClass().getResource("/fxml/Main.fxml"));
+            sqlManager insertOrder = new sqlManager();
+            if(insertOrder.insertIntoUserData(insert))
+            {
+                //Load first the FXML
+                FXMLLoader loadNew = new FXMLLoader();
+                loadNew.setLocation(getClass().getResource("/fxml/Main.fxml"));
 
-            //Get the controller
-            Parent viewParent = loadNew.load();
-            MainUiController mainUi = loadNew.getController();
+                //Get the controller
+                Parent viewParent = loadNew.load();
+                MainUiController mainUi = loadNew.getController();
 
-            //Send data to new Controller
-            mainUi.setCurrentuser(insert);
-            Scene viewScene = new Scene(viewParent);
+                //Send data to new Controller
+                mainUi.setCurrentuser(insert.getEmailAddress());
+                Scene viewScene = new Scene(viewParent);
 
-            //Switch view
-            Stage srcWin = (Stage)((Node)e.getSource()).getScene().getWindow();
-            srcWin.setScene(viewScene);
-            srcWin.show();
+                //Switch view
+                Stage srcWin = (Stage)((Node)e.getSource()).getScene().getWindow();
+                srcWin.setScene(viewScene);
+                srcWin.show();
 
-        }
-        else
+            }
+            else
+            {
+
+                launchInvalidwindow();
+            }
+        }catch (SQLException a)
         {
+            a.printStackTrace();
             launchInvalidwindow();
         }
-
     }
 
     private void launchInvalidwindow() throws IOException

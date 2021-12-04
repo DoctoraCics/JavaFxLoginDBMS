@@ -1,5 +1,6 @@
 package Controllers;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Optional;
 
 import javaClasses.sqlManager;
@@ -41,11 +42,22 @@ public class LoginUiController
         {
             if(!containsIllegalcharacters(userName.getText().trim()))
             {
+
                 if(checkDbMatch())
                 {
-                    Parent viewParent = FXMLLoader.load(getClass().getResource("/fxml/Main.fxml"));
+                    //Load first the FXML
+                    FXMLLoader loadNew = new FXMLLoader();
+                    loadNew.setLocation(getClass().getResource("/fxml/Main.fxml"));
+
+                    //Get the controller
+                    Parent viewParent = loadNew.load();
+                    MainUiController mainUi = loadNew.getController();
+
+                    //Send data to new Controller
+                    mainUi.setCurrentuser(userName.getText().trim());
                     Scene viewScene = new Scene(viewParent);
 
+                    //Switch view
                     Stage srcWin = (Stage)((Node)aw.getSource()).getScene().getWindow();
                     srcWin.setScene(viewScene);
                     srcWin.show();
@@ -64,8 +76,16 @@ public class LoginUiController
 
     private boolean checkDbMatch()
     {
-        currentManager = new sqlManager();
-        return currentManager.validateLogin(userName.getText().trim(),passWord.getText().trim());
+        try
+        {
+            currentManager = new sqlManager();
+            return currentManager.validateLogin(userName.getText().trim(),passWord.getText().trim());
+        }catch (SQLException e)
+        {
+            System.out.println("Sql Exception Thrown");
+            e.printStackTrace();
+            return false;
+        }
     }
 
     public void invalidWindow() throws IOException

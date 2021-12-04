@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.SummaryUiController">
     <top>
         <AnchorPane prefHeight="450.0" prefWidth="700.0" style="-fx-background-color: #007FFF;" BorderPane.alignment="CENTER">
             <children>
@@ -12,13 +12,13 @@
                     <font>
                         <Font size="15.0" />
                     </font></Label>
-                <Button layoutX="21.0" layoutY="395.0" mnemonicParsing="false" style="-fx-background-color: #FFC900;" text="Logout" />
+                <Button fx:id="logOut" layoutX="21.0" layoutY="395.0" mnemonicParsing="false" onAction="#logOutnow" style="-fx-background-color: #FFC900;" text="Logout" />
                 <Label layoutX="22.0" layoutY="64.0" text="House 1" textFill="#ffc900" />
                 <Label layoutX="222.0" layoutY="64.0" text="House 2" textFill="#ffc900" />
                 <Label layoutX="432.0" layoutY="64.0" text="House 3" textFill="#ffc900" />
-                <TextArea layoutX="14.0" layoutY="89.0" prefHeight="200.0" prefWidth="200.0" text="You've succesfully inquired for&#10;House #1.&#10;&#10;Please wait for an incoming text &#10;within the day to schedule your &#10;visit and tour of the House!&#10;&#10;Take note of your Ref. #000001" />
-                <TextArea layoutX="222.0" layoutY="89.0" prefHeight="200.0" prefWidth="200.0" text="You've succesfully inquired for&#10;House #2.&#10;&#10;Please wait for an incoming text &#10;within the day to schedule your &#10;visit and tour of the House!&#10;&#10;Take note of your Ref. #000002" />
-                <TextArea layoutX="432.0" layoutY="89.0" prefHeight="200.0" prefWidth="200.0" text="You've succesfully inquired for&#10;House #3.&#10;&#10;Please wait for an incoming text &#10;within the day to schedule your &#10;visit and tour of the House!&#10;&#10;Take note of your Ref. #000003" />
+                <TextArea fx:id="resultField1" layoutX="14.0" layoutY="89.0" prefHeight="200.0" prefWidth="200.0" text="You've succesfully inquired for&#10;House #1.&#10;&#10;Please wait for an incoming text &#10;within the day to schedule your &#10;visit and tour of the House!&#10;&#10;Take note of your Ref. #000001" />
+                <TextArea fx:id="resultField2" layoutX="222.0" layoutY="89.0" prefHeight="200.0" prefWidth="200.0" text="You've succesfully inquired for&#10;House #2.&#10;&#10;Please wait for an incoming text &#10;within the day to schedule your &#10;visit and tour of the House!&#10;&#10;Take note of your Ref. #000002" />
+                <TextArea fx:id="resultField3" layoutX="432.0" layoutY="89.0" prefHeight="200.0" prefWidth="200.0" text="You've succesfully inquired for&#10;House #3.&#10;&#10;Please wait for an incoming text &#10;within the day to schedule your &#10;visit and tour of the House!&#10;&#10;Take note of your Ref. #000003" />
             </children>
         </AnchorPane>
     </top>

@@ -1,9 +1,12 @@
 package javaClasses;
 
+import dataStructure.DoubleLinkedListCircle;
+import dataStructure.NodeDLL;
+
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.sql.*;
-import java.util.Arrays;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class sqlManager
 {
@@ -12,18 +15,18 @@ public class sqlManager
     private String url;
     private Connection currentConnection;
 
-    public sqlManager()
-    {
+    public sqlManager() throws SQLException {
         username = "USER"; //change this baka iba username
         password = "S1Em$e*r#23"; //change this baka iba password
         url = "jdbc:mysql://localhost:3306/caliyxdb"; //change maybe if it does not work?
+        currentConnection = DriverManager.getConnection(this.url,this.username,this.password);
     }
 
-    public sqlManager(String url)
-    {
+    public sqlManager(String url) throws SQLException {
         username = "USER";
         password = "S1Em$e*r#23";
         url = "jdbc:mysql://localhost:3306/" + url;
+        currentConnection = DriverManager.getConnection(this.url,this.username,this.password);
     }
 
     public boolean insertIntoUserData(userData insertThis)
@@ -32,7 +35,7 @@ public class sqlManager
         {
             String query = "INSERT INTO `caliyxdb`.`user_table` (`contact_num`, `fname`, `lname`, `bday`, `home_address`, `email_address`) VALUES (?, ?, ?, ?, ?, ?);";
             String query2 = "INSERT INTO `caliyxdb`.`user_login` (`email_address`, `password`) VALUES (?, ?);";
-            currentConnection = DriverManager.getConnection(this.url,this.username,this.password);
+
             hashingValidateClass hashPass = new hashingValidateClass();
 
             PreparedStatement statement2 = currentConnection.prepareStatement(query2);
@@ -48,8 +51,8 @@ public class sqlManager
             statement.setString(5,insertThis.gethome_Address());
             statement.setString(6, insertThis.getEmailAddress());
 
-            statement.executeUpdate();
             statement2.executeUpdate();
+            statement.executeUpdate();
 
         }catch(SQLException e)
         {
@@ -76,8 +79,6 @@ public class sqlManager
 
         try
         {
-            currentConnection = DriverManager.getConnection(this.url,this.username,this.password);
-
             String query = "SELECT * FROM caliyxdb.user_login WHERE email_address = ?";
 
             PreparedStatement statement = currentConnection.prepareStatement(query);
@@ -105,14 +106,43 @@ public class sqlManager
         catch(Exception e){return false;}
     }
 
-    public houseDetails[] returnResultInquiry(groupQuery theQuery)
+    public DoubleLinkedListCircle<referenceNumber> inquireInsertion(DoubleLinkedListCircle<houseDetails> tobeInserted)
     {
-        houseDetails[] returnResult = new houseDetails[3];
-        String searchQuery = "";
+        DoubleLinkedListCircle<referenceNumber> returnThis = new DoubleLinkedListCircle<>();
         try
         {
-            searchQuery = "SELECT floor_no,bedroom_no,kitchen_no,bathroom_no,pool_yes_no,garage__yes_no,price\n" +
-                    ",barangay,province_id FROM caliyxdb.house_list WHERE\n" +
+
+            String query = "INSERT INTO `caliyxdb`.`reference_number` (`reference_num`, `amount`) VALUES (?, ?);";
+            int min = 0;
+            int max = 900000;
+            int iteration = 0;
+            NodeDLL<houseDetails> currentSelected = tobeInserted.getHead();
+            while(iteration <= tobeInserted.getNodeCounter())
+            {
+                PreparedStatement statement = this.currentConnection.prepareStatement(query);
+                int generateRandomRef = ThreadLocalRandom.current().nextInt(min, max +1);
+                statement.setInt(1,generateRandomRef);
+                statement.setInt(2,currentSelected.info.getPrice());
+                statement.executeUpdate();
+
+                referenceNumber addThis = new referenceNumber(currentSelected.info.getPrice(),generateRandomRef);
+                returnThis.addToHead(addThis);
+                ++iteration;
+                currentSelected = currentSelected.next;
+            }
+            return returnThis;
+        }
+        catch(SQLException abjsba){return returnThis;}
+    }
+
+    public DoubleLinkedListCircle<houseDetails> returnResultInquiry(groupQuery theQuery)
+    {
+        DoubleLinkedListCircle<houseDetails> returnResult = new DoubleLinkedListCircle<houseDetails>();
+        String searchQuery = "";
+
+        try
+        {
+            searchQuery = "SELECT * FROM caliyxdb.house_list WHERE\n" +
                     " (floor_no = ? OR floor_no = ?) AND\n" +
                     " (bedroom_no = ? OR bedroom_no = ?) AND\n" +
                     " (kitchen_no = ?) AND\n" +
@@ -120,6 +150,7 @@ public class sqlManager
                     " (pool_yes_no = ?) AND\n" +
                     " (garage__yes_no = ?) AND\n" +
                     " (price > ? OR price < ?);";
+            //System.out.println(searchQuery);
             PreparedStatement statement = currentConnection.prepareStatement(searchQuery);
             statement.setInt(1,theQuery.getFloorRange());
             statement.setInt(2,theQuery.getFloorRange2());
@@ -137,23 +168,13 @@ public class sqlManager
 
             ResultSet rs = statement.executeQuery();
 
-            for(int i = 0; i< returnResult.length; i++)
+            while(rs.next() && returnResult.getNodeCounter() <= 10)
             {
-                if(rs.next())
-                {
-                    houseDetails a = new houseDetails(rs.getInt("floor_no"),
-                            rs.getInt("bedroom_no"),
-                            rs.getInt("kitchen_no"),
-                            rs.getInt("bathroom_no"),
-                            rs.getInt("pool_yes_no"),
-                            rs.getInt("garage_yes_no"),
-                            rs.getInt("price"));
-
-                    returnResult[i] = a;
-                }
-
+                houseDetails enList = new houseDetails(rs.getInt("floor_no"),rs.getInt("bedroom_no")
+                ,rs.getInt("kitchen_no"),rs.getInt("bathroom_no"),rs.getInt("pool_yes_no")
+                ,rs.getInt("garage__yes_no"),rs.getInt("price"));
+                returnResult.addToHead(enList);
             }
-
         }catch(SQLException e)
         {
             e.printStackTrace();
@@ -188,6 +209,15 @@ public class sqlManager
         String compiled = "";
         try
         {
+            String Query = "SELECT floor_no,bedroom_no,kitchen_no,bathroom_no,pool_yes_no,garage__yes_no,price\n" +
+                    ",barangay,province_id FROM caliyxdb.house_list WHERE\n" +
+                    " (floor_no = ? OR floor_no = ?) AND\n" +
+                    " (bedroom_no = ? OR bedroom_no = ?) AND\n" +
+                    " (kitchen_no = ?) AND\n" +
+                    " (bathroom_no = ?) AND\n" +
+                    " (pool_yes_no = ?) AND\n" +
+                    " (garage__yes_no = ?) AND\n" +
+                    " (price > ? OR price < ?);"
 
             String query = "SELECT * FROM tbl_employees";
             currentConnection = DriverManager.getConnection(url,username,password);

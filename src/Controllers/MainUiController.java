@@ -1,5 +1,6 @@
 package Controllers;
 
+import dataStructure.DoubleLinkedListCircle;
 import javaClasses.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -7,15 +8,19 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
+import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.Optional;
 
 public class MainUiController
 {
-    private userData currentuser;
+    private String currentuser;
+
+    private DoubleLinkedListCircle<houseDetails> resultList;
 
     @FXML
     private Button logOut;
@@ -70,7 +75,7 @@ public class MainUiController
 
     public void changScrn(ActionEvent e) throws IOException
     {
-        if(e.getSource().equals(logOut))
+        if(e.getSource().equals(this.logOut))
         {
             Parent viewParent = FXMLLoader.load(getClass().getResource("/fxml/LoginUi.fxml"));
             Scene viewScene = new Scene(viewParent);
@@ -79,29 +84,42 @@ public class MainUiController
             srcWin.setScene(viewScene);
             srcWin.show();
         }
-        if(e.getSource().equals(continuE))
+        if(e.getSource().equals(this.continuE))
         {
-            sqlManager searching = new sqlManager();
+            try
+            {
+                sqlManager searching = new sqlManager();
 
-            groupQuery searchThis = initializeQuery();
-            houseDetails resultList[] = searching.returnResultInquiry(searchThis);
+                groupQuery searchThis = initializeQuery();
+                this.resultList = searching.returnResultInquiry(searchThis);
+                if(!resultList.isEmpty() && e.getSource().equals(continuE))
+                {
+                    //Load first the FXML
+                    FXMLLoader loadNew = new FXMLLoader();
+                    loadNew.setLocation(getClass().getResource("/fxml/Result.fxml"));
 
-            //Load first the FXML
-            FXMLLoader loadNew = new FXMLLoader();
-            loadNew.setLocation(getClass().getResource("/fxml/Result.fxml"));
+                    //Get the controller
+                    Parent viewParent = loadNew.load();
+                    ResultUiController mainUi = loadNew.getController();
 
-            //Get the controller
-            Parent viewParent = loadNew.load();
-            ResultUiController mainUi = loadNew.getController();
+                    //Send data to new Controller
+                    mainUi.setHouseDetails(resultList, this.currentuser);
+                    Scene viewScene = new Scene(viewParent);
 
-            //Send data to new Controller
-            mainUi.setHouseDetails(resultList);
-            Scene viewScene = new Scene(viewParent);
-
-            //Switch view
-            Stage srcWin = (Stage)((Node)e.getSource()).getScene().getWindow();
-            srcWin.setScene(viewScene);
-            srcWin.show();
+                    //Switch view
+                    Stage srcWin = (Stage)((Node)e.getSource()).getScene().getWindow();
+                    srcWin.setScene(viewScene);
+                    srcWin.show();
+                }
+                else
+                {
+                    dialogLaunch();
+                }
+            }
+            catch (SQLException abc)
+            {
+                dialogLaunch();
+            }
         }
     }
 
@@ -110,23 +128,25 @@ public class MainUiController
         //groupQuery search = new groupQuery(1,1,1,1,1,1,0,0,1,1);
         groupQuery search = new groupQuery();
 
-        System.out.println(floors.getValue().toString());
         switch (floors.getValue().toString())
         {
             case "1-2 Floors":
             {
                 search.setFloorRange(1);
                 search.setFloorRange2(2);
+                break;
             }
             case "3 Floors":
             {
                 search.setFloorRange(3);
                 search.setFloorRange2(3);
+                break;
             }
-            case "4+ Floors":
+            case "4 Floors":
             {
                 search.setFloorRange(4);
                 search.setFloorRange2(4);
+                break;
             }
         }
         switch (bedrooms.getValue().toString())
@@ -134,17 +154,20 @@ public class MainUiController
             case "1-2 Bedrooms":
             {
                 search.setBedRoomRange(1);
-                search.setBedRoomRange(2);
+                search.setBedRoomRange2(2);
+                break;
             }
             case "3-4 Bedrooms":
             {
                 search.setBedRoomRange(3);
-                search.setBedRoomRange(4);
+                search.setBedRoomRange2(4);
+                break;
             }
             case "5 bedrooms":
             {
                 search.setBedRoomRange(5);
                 search.setBedRoomRange2(5);
+                break;
             }
         }
         switch(kitchens.getValue().toString())
@@ -152,14 +175,17 @@ public class MainUiController
             case "1 kitchen":
             {
                 search.setKitchenNo(1);
+                break;
             }
             case "2 kitchens":
             {
                 search.setKitchenNo(2);
+                break;
             }
             case "3 kitchen":
             {
                 search.setKitchenNo(3);
+                break;
             }
         }
         switch (bathrooms.getValue().toString())
@@ -167,20 +193,24 @@ public class MainUiController
             case "1 Bathroom":
             {
                 search.setBathroomNo(1);
+                break;
             }
             case "2 Bathrooms":
             {
                 search.setBathroomNo(2);
+                break;
             }
             case "3 Bathrooms":
             {
                 search.setBathroomNo(3);
+                break;
             }
         }
         switch (pool.getValue().toString())
         {
             case "Yes":
                 search.setPool(1);
+                break;
             default:
                 search.setPool(0);
         }
@@ -188,6 +218,7 @@ public class MainUiController
         {
             case "Yes":
                 search.setGarage(1);
+                break;
             default:
                 search.setGarage(0);
         }
@@ -197,26 +228,50 @@ public class MainUiController
             {
                 search.setPriceRange(1000000);
                 search.setPriceRange2(5000001);
+                break;
             }
             case "7 millions":
             {
                 search.setPriceRange(4000001);
                 search.setPriceRange2(8000000);
+                break;
             }
             case "10 millions":
             {
                 search.setPriceRange(8000001);
                 search.setPriceRange2(10000001);
-
+                break;
             }
         }
-        System.out.println(search);
+        //System.out.println(search);
         return search;
     }
 
-    public void setCurrentuser(userData a)
+    public void setCurrentuser(String a)
     {
         this.currentuser = a;
-        System.out.println(currentuser.getCompiled());
+        System.out.println(currentuser);
+    }
+
+    public void dialogLaunch() throws IOException
+    {
+
+        FXMLLoader loadthis = new FXMLLoader();
+        loadthis.setLocation(getClass().getResource("/fxml/invalidDialogPrompt.fxml"));
+
+        DialogPane loadtheError = loadthis.load();
+        Dialog<ButtonType> dialog = new Dialog<>();
+
+        Stage puticon = (Stage)dialog.getDialogPane().getScene().getWindow();
+        puticon.getIcons().add(new Image(this.getClass().getResource("/Pictures/5.png").toString()));
+
+        dialog.setDialogPane(loadtheError);
+        dialog.setTitle("Error");
+
+        Optional<ButtonType> clickedButton = dialog.showAndWait();
+        if(clickedButton.get() == ButtonType.CLOSE)
+        {
+            dialog.close();
+        }
     }
 }

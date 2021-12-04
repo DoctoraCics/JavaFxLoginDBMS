@@ -16,17 +16,17 @@ public class sqlManager
     private Connection currentConnection;
 
     public sqlManager() throws SQLException {
-        username = "USER"; //change this baka iba username
-        password = "S1Em$e*r#23"; //change this baka iba password
-        url = "jdbc:mysql://localhost:3306/caliyxdb"; //change maybe if it does not work?
-        currentConnection = DriverManager.getConnection(this.url,this.username,this.password);
+        this.username = "USER"; //change this baka iba username
+        this.password = "S1Em$e*r#23"; //change this baka iba password
+        this.url = "jdbc:mysql://localhost:3306/caliyxdb"; //change maybe if it does not work?
+        this.currentConnection = DriverManager.getConnection(this.url,this.username,this.password);
     }
 
     public sqlManager(String url) throws SQLException {
-        username = "USER";
-        password = "S1Em$e*r#23";
-        url = "jdbc:mysql://localhost:3306/" + url;
-        currentConnection = DriverManager.getConnection(this.url,this.username,this.password);
+        this.username = "USER";
+        this.password = "S1Em$e*r#23";
+        this.url = "jdbc:mysql://localhost:3306/" + url;
+        this.currentConnection = DriverManager.getConnection(this.url,this.username,this.password);
     }
 
     public boolean insertIntoUserData(userData insertThis)

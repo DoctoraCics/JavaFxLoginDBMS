@@ -255,9 +255,8 @@ public class MainUiController
 
     public void dialogLaunch() throws IOException
     {
-
         FXMLLoader loadthis = new FXMLLoader();
-        loadthis.setLocation(getClass().getResource("/fxml/invalidDialogPrompt.fxml"));
+        loadthis.setLocation(getClass().getResource("/fxml/noMatchFoundDialogPrompt.fxml"));
 
         DialogPane loadtheError = loadthis.load();
         Dialog<ButtonType> dialog = new Dialog<>();

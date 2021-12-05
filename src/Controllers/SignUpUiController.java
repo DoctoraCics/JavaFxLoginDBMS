@@ -88,28 +88,92 @@ public class SignUpUiController
         int checkPostalcode = -1;
 
         boolean gotoMain = true;
-        if(checkFname ==""|| containsIllegalcharacters(checkFname))gotoMain = false;
-        if(checkLname =="" || containsIllegalcharacters(checkLname))gotoMain = false;
+        if(checkFname ==""|| containsIllegalcharacters(checkFname))
+        {
+            gotoMain = false;
+            System.out.println("First Name error");
+        }
+        if(checkLname =="" || containsIllegalcharacters(checkLname))
+        {
+            gotoMain = false;
+            System.out.println("Last Name Error");
+        }
 
-        try{checkBday = birthDate.getValue().toString();}catch (Exception z) {gotoMain = false;}
+        try{checkBday = birthDate.getValue().toString();}catch (Exception z)
+        {
+            gotoMain = false;
+            System.out.println("Birthday Error");
+        }
 
-        try{checkContactno = Integer.parseInt(contactNo.getText().trim());}catch(Exception a){gotoMain = false;}
-        if(checkContactno < 0) gotoMain = false;
+        try{checkContactno = Integer.parseInt(contactNo.getText().trim());}catch(Exception a)
+        {
+            gotoMain = false;
+            System.out.println("Contact Error");
+        }
+        if(checkContactno < 0)
+        {
+            gotoMain = false;
+            System.out.println("Contact Error < 0");
+        }
 
-        if(checkEAddress == "" || containsIllegalcharacters(checkEAddress)) gotoMain = false;
+        if(checkEAddress == "" || containsIllegalcharacters(checkEAddress))
+        {
+            gotoMain = false;
+            System.out.println("Email Address error");
+        }
 
-        try{checkhouseNo = Integer.parseInt(unitHouseNo.getText().trim());}catch(Exception ab){gotoMain = false;}
-        if(checkhouseNo < 0)gotoMain = false;
+        try{checkhouseNo = Integer.parseInt(unitHouseNo.getText().trim());}catch(Exception ab)
+        {
+            gotoMain = false;
+            System.out.println("House no Error not a Number");
+        }
+        if(checkhouseNo < 0)
+        {
+            gotoMain = false;
+            System.out.println("House no error");
+        }
 
-        if(checkStreet == "" || containsIllegalcharacters(checkStreet)) gotoMain = false;
-        if(checkCity == "" || containsIllegalcharacters(checkCity)) gotoMain = false;
-        if(checkBarangay == "" || containsIllegalcharacters(checkBarangay)) gotoMain = false;
-        if(checkProvince == "" || containsIllegalcharacters(checkProvince)) gotoMain = false;
-        if(checkRegion == "" || containsIllegalcharacters(checkRegion)) gotoMain = false;
+        if(checkStreet == "" || containsIllegalcharacters(checkStreet))
+        {
+            gotoMain = false;
+            System.out.println("Street error");
+        }
+        if(checkCity == "" || containsIllegalcharacters(checkCity))
+        {
+            gotoMain = false;
+            System.out.println("City Error");
+        }
+        if(checkBarangay == "" || containsIllegalcharacters(checkBarangay))
+        {
+            gotoMain = false;
+            System.out.println("Barangay Error");
+        }
+        if(checkProvince == "" || containsIllegalcharacters(checkProvince))
+        {
+            gotoMain = false;
+            System.out.println("Province error");
+        }
+        if(checkRegion == "" || containsIllegalcharacters(checkRegion))
+        {
+            gotoMain = false;
+            System.out.println("Region Error");
+        }
 
-        try{checkPostalcode = Integer.parseInt(postalCode.getText().trim());}catch(Exception ac){gotoMain = false;}
-        if(checkPostalcode < 0){gotoMain = false;}
-        if(checkPassword == ""){gotoMain = false;}
+        try{checkPostalcode = Integer.parseInt(postalCode.getText().trim());}catch(Exception ac)
+        {
+            gotoMain = false;
+            System.out.println("Postal code error exception");
+        }
+        if(checkPostalcode < 0)
+        {
+            gotoMain = false;
+            System.out.println("Postal code is less than 0");
+        }
+        if(checkPassword == "")
+        {
+            gotoMain = false;
+            System.out.println("Password is empty");
+        }
 
         if(gotoMain)
         {
@@ -117,7 +181,7 @@ public class SignUpUiController
                     + " " + checkRegion + " " + checkPostalcode;
 
             userData newUser = new userData(checkFname,checkLname,checkBday,
-                    checkContactno,checkEAddress, compiledHomeAddress, checkPassword); //need password field
+                    checkContactno,checkEAddress, compiledHomeAddress, checkPassword);
 
             changetoMain(e, newUser);
         }

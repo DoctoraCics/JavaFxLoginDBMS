@@ -250,7 +250,7 @@ public class MainUiController
     public void setCurrentuser(String a)
     {
         this.currentuser = a;
-        System.out.println(currentuser);
+        //System.out.println(currentuser);
     }
 
     public void dialogLaunch() throws IOException

@@ -33,26 +33,19 @@ public class sqlManager
     {
         try
         {
-            String query = "INSERT INTO `caliyxdb`.`user_table` (`contact_num`, `fname`, `lname`, `bday`, `home_address`, `email_address`) VALUES (?, ?, ?, ?, ?, ?);";
-            String query2 = "INSERT INTO `caliyxdb`.`user_login` (`email_address`, `password`) VALUES (?, ?);";
+            String callStatement = "CALL caliyxdb.createnewAccount(?, ?, ?, ?, ?, ?, ?);";
 
             hashingValidateClass hashPass = new hashingValidateClass();
 
-            PreparedStatement statement2 = currentConnection.prepareStatement(query2);
-            statement2.setString(1,insertThis.getEmailAddress());
-            statement2.setString(2,hashPass.hashThePass(insertThis.getPassWord()));
-
-
-            PreparedStatement statement = currentConnection.prepareStatement(query);
-            statement.setInt(1,insertThis.getContactNo());
-            statement.setString(2,insertThis.getFirstName());
-            statement.setString(3,insertThis.getLastName());
-            statement.setString(4,insertThis.getBirthDate());
-            statement.setString(5,insertThis.gethome_Address());
-            statement.setString(6, insertThis.getEmailAddress());
-
+            CallableStatement statement2 = currentConnection.prepareCall(callStatement);
+            statement2.setInt(1,insertThis.getContactNo());
+            statement2.setString(2,insertThis.getFirstName());
+            statement2.setString(3,insertThis.getLastName());
+            statement2.setString(4,insertThis.getBirthDate());
+            statement2.setString(5,insertThis.gethome_Address());
+            statement2.setString(6, insertThis.getEmailAddress());
+            statement2.setString(7,hashPass.hashThePass(insertThis.getPassWord()));
             statement2.executeUpdate();
-            statement.executeUpdate();
 
         }catch(SQLException e)
         {
@@ -79,10 +72,13 @@ public class sqlManager
 
         try
         {
-            String query = "SELECT * FROM caliyxdb.user_login WHERE email_address = ?";
+            //String query = "SELECT * FROM caliyxdb.user_login WHERE email_address = ?";
+            //PreparedStatement statement = currentConnection.prepareStatement(query);
+            //statement.setString(1, username);
 
-            PreparedStatement statement = currentConnection.prepareStatement(query);
-            statement.setString(1, username);
+            String callablle = "CALL selectLogin(?)";
+            CallableStatement statement = currentConnection.prepareCall(callablle);
+            statement.setString(1,username);
 
             //Do not past "query" in the executeQuery as the ? is passed
             ResultSet retrievedData = statement.executeQuery();
@@ -111,15 +107,14 @@ public class sqlManager
         DoubleLinkedListCircle<referenceNumber> returnThis = new DoubleLinkedListCircle<>();
         try
         {
-
-            String query = "INSERT INTO `caliyxdb`.`reference_number` (`reference_num`, `amount`,`house_id`) VALUES (?, ?, ?);";
-            int min = 0;
-            int max = 900000;
+            String query = "CALL caliyxdb.insertRefNumber(?,?,?);";
+            int min = 100000;
+            int max = 999999;
             int iteration = tobeInserted.getNodeCounter();
             NodeDLL<houseDetails> currentSelected = tobeInserted.getHead();
             while(0 < iteration)
             {
-                PreparedStatement statement = this.currentConnection.prepareStatement(query);
+                CallableStatement statement = this.currentConnection.prepareCall(query);
                 int generateRandomRef = ThreadLocalRandom.current().nextInt(min, max +1);
                 statement.setInt(1,generateRandomRef);
                 statement.setInt(2,currentSelected.info.getPrice());
@@ -147,16 +142,9 @@ public class sqlManager
 
         try
         {
-            searchQuery = "SELECT * FROM caliyxdb.house_list WHERE\n" +
-                    " (floor_no = ? OR floor_no = ?) AND\n" +
-                    " (bedroom_no = ? OR bedroom_no = ?) AND\n" +
-                    " (kitchen_no = ?) AND\n" +
-                    " (bathroom_no = ?) AND\n" +
-                    " (pool_yes_no = ?) AND\n" +
-                    " (garage__yes_no = ?) AND\n" +
-                    " (price > ? OR price < ?);";
-            //System.out.println(searchQuery);
-            PreparedStatement statement = currentConnection.prepareStatement(searchQuery);
+            searchQuery = "CALL caliyxdb.searchHouse(?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+            CallableStatement statement = currentConnection.prepareCall(searchQuery);
+
             statement.setInt(1,theQuery.getFloorRange());
             statement.setInt(2,theQuery.getFloorRange2());
 

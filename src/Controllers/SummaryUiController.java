@@ -11,7 +11,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 
 public class SummaryUiController
@@ -42,7 +41,7 @@ public class SummaryUiController
 
     public void setTheController(String email, DoubleLinkedListCircle<referenceNumber> inquiredHouses)
     {
-        System.out.println(email);
+        //System.out.println(email);
         this.email = email;
         this.inquireD = inquiredHouses;
         this.receipt1 = inquiredHouses.getHead();

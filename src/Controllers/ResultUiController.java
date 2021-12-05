@@ -45,6 +45,12 @@ public class ResultUiController
     private Button inquire3;
 
 
+    public void initialize()
+    {
+        goToSummary.setDisable(true);
+    }
+
+
     public void takeAction(ActionEvent e) throws IOException, SQLException
     {
         switch (retrievedHoused.getNodeCounter())
@@ -81,7 +87,7 @@ public class ResultUiController
                 marcher = marcher.next;
                 --iterations;
             }
-            System.out.println("Number of nodes for transformed: " + transFormed.getNodeCounter());
+            //System.out.println("Number of nodes for transformed: " + transFormed.getNodeCounter());
 
 
             sqlManager insertionOfReceipt = new sqlManager();
@@ -137,6 +143,9 @@ public class ResultUiController
                 inquire2.setText("Inquire");
                 inquire3.setText("Inquire");
                 result1.info.setInquireD(false);
+                goToSummary.setDisable(true);
+
+
             }
             else
             {
@@ -144,6 +153,7 @@ public class ResultUiController
                 inquire2.setText("Cancel");
                 inquire3.setText("Cancel");
                 result1.info.setInquireD(true);
+                goToSummary.setDisable(false);
             }
         }
     }
@@ -177,6 +187,15 @@ public class ResultUiController
                 inquire2.setText("Cancel");
                 result2.info.setInquireD(true);
             }
+        }
+        if(result1.info.getInquired() || result2.info.getInquired())
+        {
+            goToSummary.setDisable(false);
+        }
+        else
+        {
+            goToSummary.setDisable(true);
+
         }
     }
 
@@ -220,6 +239,15 @@ public class ResultUiController
                 inquire3.setText("Cancel");
                 result3.info.setInquireD(true);
             }
+        }
+        if(result1.info.getInquired() || result2.info.getInquired() || result3.info.getInquired())
+        {
+            goToSummary.setDisable(false);
+        }
+        else
+        {
+            goToSummary.setDisable(true);
+
         }
     }
 }

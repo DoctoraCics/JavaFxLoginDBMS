@@ -15,7 +15,7 @@ public class Main extends Application {
         primaryStage.setTitle("Database Login");
         primaryStage.setScene(new Scene(root, 580, 400));
         primaryStage.getIcons().add(new Image("file:src/Pictures/5.png"));
-        primaryStage.setResizable(true);
+        primaryStage.setResizable(false);
         primaryStage.show();
     }
     public static void main(String[] args) {

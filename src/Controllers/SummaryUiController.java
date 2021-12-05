@@ -41,7 +41,6 @@ public class SummaryUiController
 
     public void setTheController(String email, DoubleLinkedListCircle<referenceNumber> inquiredHouses)
     {
-        //System.out.println(email);
         this.email = email;
         this.inquireD = inquiredHouses;
         this.receipt1 = inquiredHouses.getHead();

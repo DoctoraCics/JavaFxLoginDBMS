@@ -125,9 +125,7 @@ public class MainUiController
 
     private groupQuery initializeQuery()
     {
-        //groupQuery search = new groupQuery(1,1,1,1,1,1,0,0,1,1);
         groupQuery search = new groupQuery();
-
         switch (floors.getValue().toString())
         {
             case "1-2 Floors":
@@ -239,18 +237,16 @@ public class MainUiController
             case "10 millions":
             {
                 search.setPriceRange(8000001);
-                search.setPriceRange2(10000001);
+                search.setPriceRange2(20000001);
                 break;
             }
         }
-        //System.out.println(search);
         return search;
     }
 
     public void setCurrentuser(String a)
     {
         this.currentuser = a;
-        //System.out.println(currentuser);
     }
 
     public void dialogLaunch() throws IOException

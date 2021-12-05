@@ -75,7 +75,6 @@ public class ResultUiController
         if(e.getSource().equals(goToSummary))
         {
             DoubleLinkedListCircle<houseDetails> transFormed = new DoubleLinkedListCircle<>();
-            //System.out.println("Number of nodes for retreived Houses: " + this.retrievedHoused.getNodeCounter());
             int iterations = this.retrievedHoused.getNodeCounter();
             NodeDLL<houseDetails> marcher = this.retrievedHoused.getHead();
             while(0 < iterations)
@@ -87,12 +86,10 @@ public class ResultUiController
                 marcher = marcher.next;
                 --iterations;
             }
-            //System.out.println("Number of nodes for transformed: " + transFormed.getNodeCounter());
 
 
             sqlManager insertionOfReceipt = new sqlManager();
             DoubleLinkedListCircle<referenceNumber> receipt = insertionOfReceipt.inquireInsertion(transFormed);
-            //System.out.println(receipt.getHead().info.getReferenceNumber());
 
             //Load first the FXML
             FXMLLoader loadNew = new FXMLLoader();
@@ -123,7 +120,6 @@ public class ResultUiController
     {
         this.retrievedHoused = received;
         NodeDLL<houseDetails> startPointer = retrievedHoused.getHead();
-        //System.out.println(startPointer.info.toString());
         result1 = retrievedHoused.getHead();
         result2 = result1.next;
         result3 = result2.next;
@@ -247,7 +243,6 @@ public class ResultUiController
         else
         {
             goToSummary.setDisable(true);
-
         }
     }
 }

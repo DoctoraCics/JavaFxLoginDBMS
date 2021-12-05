@@ -5,13 +5,13 @@ public class userData
     private String firstName;
     private String lastName;
     private String birthDate;
-    private int contactNo;
+    private long contactNo;
     private String emailAddress;
     private String home_Address;
     private String passWord;
 
 
-    public userData(String fname, String lname, String bDay, int contact,
+    public userData(String fname, String lname, String bDay, long contact,
                     String eAddress, String home_Address, String passWord)
     {
         this.firstName = fname;
@@ -41,7 +41,7 @@ public class userData
         return birthDate;
     }
 
-    public int getContactNo() {
+    public long getContactNo() {
         return contactNo;
     }
 

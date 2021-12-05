@@ -77,7 +77,7 @@ public class SignUpUiController
         String checkBday = "";
         String checkEAddress = emailAddress.getText().trim();
         String checkPassword = passwWord.getText().trim();
-        int checkContactno = -1;
+        long checkContactno = -1;
 
         int checkhouseNo = -1;
         String checkStreet = streetD.getText().trim();
@@ -105,10 +105,15 @@ public class SignUpUiController
             System.out.println("Birthday Error");
         }
 
-        try{checkContactno = Integer.parseInt(contactNo.getText().trim());}catch(Exception a)
+        try
+        {
+            checkContactno = Long.parseLong(contactNo.getText().trim());
+        }
+        catch(Exception a)
         {
             gotoMain = false;
             System.out.println("Contact Error");
+            a.printStackTrace();
         }
         if(checkContactno < 0)
         {
@@ -125,6 +130,7 @@ public class SignUpUiController
         try{checkhouseNo = Integer.parseInt(unitHouseNo.getText().trim());}catch(Exception ab)
         {
             gotoMain = false;
+            ab.printStackTrace();
             System.out.println("House no Error not a Number");
         }
         if(checkhouseNo < 0)
@@ -177,7 +183,7 @@ public class SignUpUiController
 
         if(gotoMain)
         {
-            String compiledHomeAddress = checkhouseNo + " " + checkStreet + " " + checkCity + " " + checkBarangay + " " + checkProvince
+            String compiledHomeAddress = checkhouseNo + " " + checkStreet + " " + checkBarangay + " " + checkCity + " " + checkProvince
                     + " " + checkRegion + " " + checkPostalcode;
 
             userData newUser = new userData(checkFname,checkLname,checkBday,

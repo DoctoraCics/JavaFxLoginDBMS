@@ -13,12 +13,14 @@ public class hashingValidateClass
     public static String hashThePass(String password) throws NoSuchAlgorithmException, InvalidKeySpecException
     {
         //The number of iterations must be noted
-        int iterations = 1000;
+        int iterations = 2000;
         char[] setChar = password.toCharArray();
         byte[] salt = getSalt();
 
-        PBEKeySpec spec = new PBEKeySpec(setChar,salt,iterations,32*4); //increase key length is possible
-        SecretKeyFactory secretK = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1"); //the string changeable Note: Use a random characters Note: Must be changed to something else
+        //increase key length is possible
+        PBEKeySpec spec = new PBEKeySpec(setChar,salt,iterations,64*2);
+        //not changeable as it is the name of the algorithms being used
+        SecretKeyFactory secretK = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
 
         byte[] hash = secretK.generateSecret(spec).getEncoded();
         return  iterations + ":" + convertoHex(salt) + ":" + convertoHex(hash);
@@ -26,7 +28,7 @@ public class hashingValidateClass
 
     private static byte[] getSalt() throws NoSuchAlgorithmException
     {
-        SecureRandom sr = SecureRandom.getInstance("SHA1PRNG"); //the parameter is changeable Note: this too must be changed
+        SecureRandom sr = SecureRandom.getInstance("SHA1PRNG");
         byte[] salt = new byte[16];
         sr.nextBytes(salt);
         return salt;

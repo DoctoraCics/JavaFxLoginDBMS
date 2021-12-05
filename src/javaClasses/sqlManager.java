@@ -2,7 +2,6 @@ package javaClasses;
 
 import dataStructure.DoubleLinkedListCircle;
 import dataStructure.NodeDLL;
-
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.sql.*;
@@ -15,17 +14,11 @@ public class sqlManager
     private String url;
     private Connection currentConnection;
 
-    public sqlManager() throws SQLException {
+    public sqlManager() throws SQLException
+    {
         this.username = "USER"; //change this baka iba username
         this.password = "S1Em$e*r#23"; //change this baka iba password
         this.url = "jdbc:mysql://localhost:3306/caliyxdb"; //change maybe if it does not work?
-        this.currentConnection = DriverManager.getConnection(this.url,this.username,this.password);
-    }
-
-    public sqlManager(String url) throws SQLException {
-        this.username = "USER";
-        this.password = "S1Em$e*r#23";
-        this.url = "jdbc:mysql://localhost:3306/" + url;
         this.currentConnection = DriverManager.getConnection(this.url,this.username,this.password);
     }
 
@@ -37,15 +30,15 @@ public class sqlManager
 
             hashingValidateClass hashPass = new hashingValidateClass();
 
-            CallableStatement statement2 = currentConnection.prepareCall(callStatement);
-            statement2.setInt(1,insertThis.getContactNo());
-            statement2.setString(2,insertThis.getFirstName());
-            statement2.setString(3,insertThis.getLastName());
-            statement2.setString(4,insertThis.getBirthDate());
-            statement2.setString(5,insertThis.gethome_Address());
-            statement2.setString(6, insertThis.getEmailAddress());
-            statement2.setString(7,hashPass.hashThePass(insertThis.getPassWord()));
-            statement2.executeUpdate();
+            CallableStatement calledStatement = currentConnection.prepareCall(callStatement);
+            calledStatement.setLong(1,insertThis.getContactNo());
+            calledStatement.setString(2,insertThis.getFirstName());
+            calledStatement.setString(3,insertThis.getLastName());
+            calledStatement.setString(4,insertThis.getBirthDate());
+            calledStatement.setString(5,insertThis.gethome_Address());
+            calledStatement.setString(6, insertThis.getEmailAddress());
+            calledStatement.setString(7,hashPass.hashThePass(insertThis.getPassWord()));
+            calledStatement.executeUpdate();
 
         }catch(SQLException e)
         {
@@ -67,21 +60,14 @@ public class sqlManager
 
     public boolean validateLogin(String username, String pass)
     {
-        //This version is very dangerous
-        //String query = "SELECT * FROM caliyxdb.user_login WHERE email_address=" + "'" + username + "'";
-
         try
         {
-            //String query = "SELECT * FROM caliyxdb.user_login WHERE email_address = ?";
-            //PreparedStatement statement = currentConnection.prepareStatement(query);
-            //statement.setString(1, username);
-
-            String callablle = "CALL selectLogin(?)";
-            CallableStatement statement = currentConnection.prepareCall(callablle);
-            statement.setString(1,username);
+            String statemenT = "CALL selectLogin(?)";
+            CallableStatement calledStatement = currentConnection.prepareCall(statemenT);
+            calledStatement.setString(1,username);
 
             //Do not past "query" in the executeQuery as the ? is passed
-            ResultSet retrievedData = statement.executeQuery();
+            ResultSet retrievedData = calledStatement.executeQuery();
 
             String retrievedHash = "";
             String retrievedEmail = " ";
@@ -178,80 +164,6 @@ public class sqlManager
             e.printStackTrace();
             System.out.println("Nullpointer in sql class");
         }
-        //System.out.println(returnResult[0].toString());
         return returnResult;
     }
-
-/*
-    public ObservableList returnDBdata(ObservableList oblist) throws SQLException
-    {
-        currentConnection = DriverManager.getConnection(url,username,password);
-        ResultSet rs = currentConnection.createStatement().executeQuery("SELECT * FROM tbl_employees");
-        ObservableList editingList = oblist;
-        while (rs.next())
-        {
-            editingList.add(new TblView(rs.getString("employee_id"),rs.getString("department"),rs.getString("location"),rs.getString("name")));
-        }
-        return editingList;
-    }
-}
-*/
-/* Different Code
-    public String returnQuery()
-    {
-        String compiled = "";
-        try
-        {
-            String Query = "SELECT floor_no,bedroom_no,kitchen_no,bathroom_no,pool_yes_no,garage__yes_no,price\n" +
-                    ",barangay,province_id FROM caliyxdb.house_list WHERE\n" +
-                    " (floor_no = ? OR floor_no = ?) AND\n" +
-                    " (bedroom_no = ? OR bedroom_no = ?) AND\n" +
-                    " (kitchen_no = ?) AND\n" +
-                    " (bathroom_no = ?) AND\n" +
-                    " (pool_yes_no = ?) AND\n" +
-                    " (garage__yes_no = ?) AND\n" +
-                    " (price > ? OR price < ?);"
-
-            String query = "SELECT * FROM tbl_employees";
-            currentConnection = DriverManager.getConnection(url,username,password);
-            PreparedStatement statement = currentConnection.prepareStatement(query);
-            ResultSet result = statement.executeQuery(query);
-
-            while(result.next())
-            {
-                String name = result.getString(4);
-                compiled += name +" \n";
-            }
-        }
-        catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return compiled;
-
-*/
-        /*
-    public boolean deleteAccountUser(userData deleteThis)
-    {
-        try
-        {
-            String deleteUpdateLogin = "DELETE FROM `caliyxdb`.`user_login` WHERE (`email_address` = ?);";
-            String deleteUserdata = "DELETE FROM `caliyxdb`.`user_table` WHERE (`contact_num` = ?);";
-            currentConnection = DriverManager.getConnection(this.url,this.username,this.password);
-
-            PreparedStatement statement = currentConnection.prepareStatement(deleteUpdateLogin);
-            statement.setString(1,deleteThis.getEmailAddress());
-
-            PreparedStatement statement2 = currentConnection.prepareStatement(deleteUserdata);
-            statement2.setInt(1,deleteThis.getContactNo());
-
-            statement.executeUpdate();
-            statement2.executeUpdate();
-        }catch(SQLException e)
-        {
-            e.printStackTrace();
-            return false;
-        }
-        return true;
-    }
-    */
 }

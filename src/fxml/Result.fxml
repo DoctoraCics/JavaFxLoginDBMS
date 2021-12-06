@@ -17,9 +17,9 @@
             <Label layoutX="22.0" layoutY="64.0" text="House 1" textFill="#ffc900" />
             <Label layoutX="222.0" layoutY="64.0" text="House 2" textFill="#ffc900" />
             <Label layoutX="432.0" layoutY="64.0" text="House 3" textFill="#ffc900" />
-            <TextArea fx:id="resultField" layoutX="14.0" layoutY="89.0" prefHeight="200.0" prefWidth="200.0" text="410 Dr. Sixto Antonio Avenue&#10;2 Floors&#10;2 Bedrooms&#10;2 Kitchens&#10;2 Bathrooms&#10;Pool: Yes&#10;Garage: Yes&#10;Php 5,000,000" />
-            <TextArea fx:id="resultField2" layoutX="222.0" layoutY="89.0" prefHeight="200.0" prefWidth="200.0" text="410 Dr. Sixto Antonio Avenue&#10;2 Floors&#10;2 Bedrooms&#10;2 Kitchens&#10;2 Bathrooms&#10;Pool: Yes&#10;Garage: Yes&#10;Php 5,000,000" />
-            <TextArea fx:id="resultField3" layoutX="432.0" layoutY="89.0" prefHeight="200.0" prefWidth="200.0" text="410 Dr. Sixto Antonio Avenue&#10;2 Floors&#10;2 Bedrooms&#10;2 Kitchens&#10;2 Bathrooms&#10;Pool: Yes&#10;Garage: Yes&#10;Php 5,000,000" />
+            <TextArea fx:id="resultField" layoutX="14.0" layoutY="89.0" prefHeight="200.0" prefWidth="200.0" />
+            <TextArea fx:id="resultField2" layoutX="222.0" layoutY="89.0" prefHeight="200.0" prefWidth="200.0" />
+            <TextArea fx:id="resultField3" layoutX="432.0" layoutY="89.0" prefHeight="200.0" prefWidth="200.0" />
             <Button fx:id="inquire1" layoutX="14.0" layoutY="298.0" mnemonicParsing="false" onAction="#takeAction" style="-fx-background-color: #FFC900;" text="Inquire" />
             <Button fx:id="inquire2" layoutX="222.0" layoutY="298.0" mnemonicParsing="false" onAction="#takeAction" style="-fx-background-color: #FFC900;" text="Inquire" />
             <Button fx:id="inquire3" layoutX="432.0" layoutY="298.0" mnemonicParsing="false" onAction="#takeAction" style="-fx-background-color: #FFC900;" text="Inquire" />

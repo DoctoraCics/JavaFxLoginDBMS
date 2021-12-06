@@ -35,6 +35,7 @@ public class SummaryUiController
         Scene viewScene = new Scene(viewParent);
 
         Stage srcWin = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        srcWin.setTitle("Database Search");
         srcWin.setScene(viewScene);
         srcWin.show();
     }
@@ -46,31 +47,83 @@ public class SummaryUiController
         this.receipt1 = inquiredHouses.getHead();
         this.receipt2 = receipt1.next;
         this.receipt3 = receipt2.next;
-        resultField1.setText("You've succesfully inquired for\n" +
-                "House #1.\n" +
-                "\n" +
-                "Please wait for an incoming text \n" +
-                "within the day to schedule your \n" +
-                "visit and tour of the House!\n" +
-                "\n" +
-                "Take note of your Ref. " + receipt1.info.getReferenceNumber());
+        switch(inquiredHouses.getNodeCounter())
+        {
+            case 1:
+            {
+                resultField1.setText("You've succesfully inquired for\n" +
+                        "House #1.\n" +
+                        "\n" +
+                        "Please wait for an incoming text \n" +
+                        "within the day to schedule your \n" +
+                        "visit and tour of the House!\n" +
+                        "\n" +
+                        "Take note of your Ref. " + receipt1.info.getReferenceNumber());
 
-        resultField2.setText("You've succesfully inquired for\n" +
-                "House #2.\n" +
-                "\n" +
-                "Please wait for an incoming text \n" +
-                "within the day to schedule your \n" +
-                "visit and tour of the House!\n" +
-                "\n" +
-                "Take note of your Ref. " + receipt2.info.getReferenceNumber());
+                        resultField2.setDisable(true);
+                        resultField3.setDisable(true);
 
-        resultField3.setText("You've succesfully inquired for\n" +
-                "House #3.\n" +
-                "\n" +
-                "Please wait for an incoming text \n" +
-                "within the day to schedule your \n" +
-                "visit and tour of the House!\n" +
-                "\n" +
-                "Take note of your Ref. " + receipt3.info.getReferenceNumber());
+                        resultField2.setText("");
+                        resultField3.setText("");
+                        break;
+            }
+            case 2:
+            {
+                resultField1.setText("You've succesfully inquired for\n" +
+                        "House #1.\n" +
+                        "\n" +
+                        "Please wait for an incoming text \n" +
+                        "within the day to schedule your \n" +
+                        "visit and tour of the House!\n" +
+                        "\n" +
+                        "Take note of your Ref. " + receipt1.info.getReferenceNumber());
+
+                resultField2.setText("You've succesfully inquired for\n" +
+                        "House #2.\n" +
+                        "\n" +
+                        "Please wait for an incoming text \n" +
+                        "within the day to schedule your \n" +
+                        "visit and tour of the House!\n" +
+                        "\n" +
+                        "Take note of your Ref. " + receipt2.info.getReferenceNumber());
+
+                resultField3.setDisable(true);
+                resultField3.setText("");
+                break;
+
+            }
+            default:
+            {
+                resultField1.setText("You've succesfully inquired for\n" +
+                        "House #1.\n" +
+                        "\n" +
+                        "Please wait for an incoming text \n" +
+                        "within the day to schedule your \n" +
+                        "visit and tour of the House!\n" +
+                        "\n" +
+                        "Take note of your Ref. " + receipt1.info.getReferenceNumber());
+
+                resultField2.setText("You've succesfully inquired for\n" +
+                        "House #2.\n" +
+                        "\n" +
+                        "Please wait for an incoming text \n" +
+                        "within the day to schedule your \n" +
+                        "visit and tour of the House!\n" +
+                        "\n" +
+                        "Take note of your Ref. " + receipt2.info.getReferenceNumber());
+
+                resultField3.setText("You've succesfully inquired for\n" +
+                        "House #3.\n" +
+                        "\n" +
+                        "Please wait for an incoming text \n" +
+                        "within the day to schedule your \n" +
+                        "visit and tour of the House!\n" +
+                        "\n" +
+                        "Take note of your Ref. " + receipt3.info.getReferenceNumber());
+                break;
+            }
+        }
+
+
     }
 }

@@ -11,8 +11,9 @@ public class houseDetails
     private int garage;
     private int price;
     private boolean inquireD;
+    private String location;
 
-    public houseDetails(int floors, int bedrooms, int kitchens,int bathrooms, int pool, int garage, int price,int houseId)
+    public houseDetails(int floors, int bedrooms, int kitchens,int bathrooms, int pool, int garage, int price,int houseId, String location)
     {
         this.floors=floors;
         this.bedrooms=bedrooms;
@@ -23,6 +24,7 @@ public class houseDetails
         this.price=price;
         this.inquireD = false;
         this.houseId = houseId;
+        this.location = location;
     }
 
     @Override
@@ -45,7 +47,8 @@ public class houseDetails
                 "Bathrooms: " + this.bathrooms + "\n" +
                 "Pool: " + yesNoPool + "\n" +
                 "Garage: " + yesNoGarage + "\n" +
-                "Price: " + this.price + "\n";
+                "Price: " + this.price + "\n" +
+                "Location: " + this.location;
         return compile;
     }
 
@@ -88,4 +91,12 @@ public class houseDetails
     }
 
     public int getHouseId(){return this.houseId;}
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
 }

@@ -107,6 +107,7 @@ public class ResultUiController
 
                 //Switch view
                 Stage srcWin = (Stage)((Node)e.getSource()).getScene().getWindow();
+                srcWin.setTitle("Summary");
                 srcWin.setScene(viewScene);
                 srcWin.show();
             }catch(NullPointerException a)

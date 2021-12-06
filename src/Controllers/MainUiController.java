@@ -108,6 +108,7 @@ public class MainUiController
 
                     //Switch view
                     Stage srcWin = (Stage)((Node)e.getSource()).getScene().getWindow();
+                    srcWin.setTitle("Result");
                     srcWin.setScene(viewScene);
                     srcWin.show();
                 }

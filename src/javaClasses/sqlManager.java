@@ -149,9 +149,10 @@ public class sqlManager
 
             while(rs.next() && returnResult.getNodeCounter() <= 10)
             {
+                String location = rs.getString("area_name") + " " + rs.getString("province_name");
                 houseDetails enList = new houseDetails(rs.getInt("floor_no"),rs.getInt("bedroom_no")
                 ,rs.getInt("kitchen_no"),rs.getInt("bathroom_no"),rs.getInt("pool_yes_no")
-                ,rs.getInt("garage__yes_no"),rs.getInt("price"),rs.getInt("house_id"));
+                ,rs.getInt("garage__yes_no"),rs.getInt("price"),rs.getInt("house_id"), location);
                 returnResult.addToHead(enList);
             }
         }catch(SQLException e)

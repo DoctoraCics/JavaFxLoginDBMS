@@ -12,7 +12,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/LoginUi.fxml"));
-        primaryStage.setTitle("Database Login");
+        primaryStage.setTitle("Database Search");
         primaryStage.setScene(new Scene(root, 580, 400));
         primaryStage.getIcons().add(new Image("file:src/Pictures/5.png"));
         primaryStage.setResizable(false);

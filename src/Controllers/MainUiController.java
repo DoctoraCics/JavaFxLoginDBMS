@@ -82,6 +82,7 @@ public class MainUiController
 
             Stage srcWin = (Stage)((Node)e.getSource()).getScene().getWindow();
             srcWin.setScene(viewScene);
+            srcWin.centerOnScreen();
             srcWin.show();
         }
         if(e.getSource().equals(this.continuE))

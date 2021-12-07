@@ -37,6 +37,7 @@ public class SummaryUiController
         Stage srcWin = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
         srcWin.setTitle("Database Search");
         srcWin.setScene(viewScene);
+        srcWin.centerOnScreen();
         srcWin.show();
     }
 

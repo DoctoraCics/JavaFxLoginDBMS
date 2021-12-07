@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.Optional;
 
 import javaClasses.sqlManager;
+import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -36,6 +37,7 @@ public class LoginUiController
 
             Stage srcWin = (Stage)((Node)aw.getSource()).getScene().getWindow();
             srcWin.setScene(viewScene);
+            srcWin.centerOnScreen();
             srcWin.show();
         }
         if(aw.getSource().equals(LogInBtn))
@@ -123,4 +125,5 @@ public class LoginUiController
         }
         return false;
     }
+
 }

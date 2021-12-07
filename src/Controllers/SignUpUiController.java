@@ -66,6 +66,7 @@ public class SignUpUiController
 
             Stage srcWin = (Stage)((Node)e.getSource()).getScene().getWindow();
             srcWin.setScene(viewScene);
+            srcWin.centerOnScreen();
             srcWin.show();
         }
     }

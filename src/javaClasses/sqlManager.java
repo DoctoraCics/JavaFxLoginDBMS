@@ -18,7 +18,7 @@ public class sqlManager
     {
         this.username = "USER"; //change this baka iba username
         this.password = "S1Em$e*r#23"; //change this baka iba password
-        this.url = "jdbc:mysql://localhost:3306/caliyxdb"; //change maybe if it does not work?
+        this.url = "jdbc:mysql://localhost:3306/caliyxdb";
         this.currentConnection = DriverManager.getConnection(this.url,this.username,this.password);
     }
 
@@ -93,7 +93,7 @@ public class sqlManager
         DoubleLinkedListCircle<referenceNumber> returnThis = new DoubleLinkedListCircle<>();
         try
         {
-            String query = "CALL caliyxdb.insertRefNumber(?,?,?);";
+            String query = "CALL caliyxdb.insertRefNumber(?,?);";
             int min = 100000;
             int max = 999999;
             int iteration = tobeInserted.getNodeCounter();
@@ -103,11 +103,10 @@ public class sqlManager
                 CallableStatement statement = this.currentConnection.prepareCall(query);
                 int generateRandomRef = ThreadLocalRandom.current().nextInt(min, max +1);
                 statement.setInt(1,generateRandomRef);
-                statement.setInt(2,currentSelected.info.getPrice());
-                statement.setInt(3,currentSelected.info.getHouseId());
+                statement.setInt(2,currentSelected.info.getHouseId());
                 statement.executeUpdate();
 
-                referenceNumber addThis = new referenceNumber(currentSelected.info.getPrice(),generateRandomRef);
+                referenceNumber addThis = new referenceNumber(generateRandomRef);
                 returnThis.addToHead(addThis);
                 --iteration;
                 currentSelected = currentSelected.next;

@@ -6,11 +6,9 @@ public class referenceNumber
         return referenceNumber;
     }
     private int referenceNumber;
-    private int amount;
 
-    public referenceNumber(int receiveAmount, int theNumber)
+    public referenceNumber(int theNumber)
     {
         this.referenceNumber = theNumber;
-        this.amount = receiveAmount;
     }
 }
